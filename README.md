@@ -14,6 +14,8 @@ This project aims to fill this gap, answering the following questions:
 * How do compressed files compare to non-compressed files in terms of entropy?
 * How can a machine-learning system be designed and trained to detect compression algorithms?
 
+**TL;DR** CompDec is a novel approach to automatically detect the compression algorithm used for file fragments using machine learning.
+
 ## Table of Contents
 
 [Development](#development)<br />
