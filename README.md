@@ -94,10 +94,11 @@ python3 tools/create_index.py 4096 ./data/dataset
 
 Example output:
 ```
-"file path","file size","chunk size", mime
-"/path/to/data/dataset/thread0.zip",322469174,78728,"application/zip"
-"/path/to/data/dataset/909/909820.pdf",291569,72,"application/pdf"
-"/path/to/data/dataset/135/135778.pdf",14013,4,"application/pdf"
+"file path","file size","chunk size","chunks",mime
+"/path/to/compdec/data/dataset/thread0.zip",322469174,4096,78728,"application/zip"
+"/path/to/compdec/data/dataset/909/909820.pdf",291569,4096,72,"application/pdf"
+"/path/to/compdec/data/dataset/135/135778.pdf",14013,4096,4,"application/pdf"
+"/path/to/compdec/data/dataset/135/135495.html",18127,4096,5,"text/html"
 ...
 ```
 
@@ -128,37 +129,38 @@ This is a tool to perform a stratified sampling of a dataset.
 
 Usage:
 ```sh
-python3 ./tools/stratified_sampling.py <index path> <strata size>
+python3 ./tools/stratified_sampling.py <seed> <index path> <strata size>
 ```
 
 Example:
 ```sh
-python3 tools/stratified_sampling.py index.txt 20
+python3 tools/stratified_sampling.py 1.3035772690 index.txt 20
 ```
 
 Example output:
 ```
 mime,samples,frequency
-"application/pdf",257,0.26
-"text/html",227,0.23
-"text/plain",84,0.085
-"image/jpeg",104,0.1
-"application/msword",67,0.068
-"text/xml",31,0.031
-"application/vnd.ms-powerpoint",56,0.057
-"image/gif",27,0.027
-"text/csv",17,0.017
-"None",29,0.029
-"application/vnd.ms-excel",60,0.061
-"application/postscript",22,0.022
-"image/png",3,0.003
-"application/x-shockwave-flash",7,0.0071
-Total samples: 991
+"application/zip",78728,0.35
+"application/pdf",37438,0.17
+"text/html",3590,0.016
+"text/plain",45112,0.2
+"image/jpeg",9875,0.044
+"application/msword",6659,0.03
+"text/xml",598,0.0027
+"application/vnd.ms-powerpoint",29038,0.13
+"image/gif",580,0.0026
+"text/csv",679,0.003
+"None",1275,0.0057
+"application/vnd.ms-excel",6953,0.031
+"application/postscript",2535,0.011
+"image/png",604,0.0027
+"application/x-shockwave-flash",362,0.0016
+Total samples: 224026
 Strata size: 20
-"file path","file size","chunk size", mime
-"/path/to/data/dataset/672/672102.jpg",319707,79,"image/jpeg"
-"/path/to/data/dataset/527/527337.pdf",121728,30,"application/pdf"
-"/path/to/data/dataset/740/740380.doc",632320,155,"application/msword"
-"/path/to/data/dataset/999/999354.pdf",369663,91,"application/pdf"
+"file path",offset,"chunk size",mime
+"/path/to/compdec/data/dataset/thread0.zip",108646400,4096,"application/zip"
+"/path/to/compdec/data/dataset/191/191969.txt",125845504,4096,"text/plain"
+"/path/to/compdec/data/dataset/354/354930.doc",307200,4096,"application/msword"
+"/path/to/compdec/data/dataset/thread0.zip",34136064,4096,"application/zip"
 ...
 ```

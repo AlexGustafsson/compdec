@@ -10,10 +10,10 @@ def recurse(chunk_size: int, directory: str) -> None:
             file_size = os.path.getsize(file_path)
             chunks = ceil(file_size / chunk_size)
             mime = mimetypes.MimeTypes().guess_type(file_path)[0]
-            print('"{}",{},{},"{}"'.format(file_path, file_size, chunks, mime))
+            print('"{}",{},{},{},"{}"'.format(file_path, file_size, chunk_size, chunks, mime))
 
 def main(chunk_size: int, dataset_path: str) -> None:
-    print('"file path","file size","chunk size", mime')
+    print('"file path","file size","chunk size","chunks",mime')
     recurse(chunk_size, dataset_path)
 
 if __name__ == '__main__':
