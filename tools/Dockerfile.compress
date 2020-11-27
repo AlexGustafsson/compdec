@@ -1,0 +1,6 @@
+FROM debian:stable-slim
+
+RUN echo "deb http://ftp.de.debian.org/debian stretch main non-free" >> /etc/apt/sources.list && \
+  apt-get update && \
+  apt-get install -y rar gzip zip bzip2 p7zip-full ncompress lz4 brotli && \
+  rm -rf /var/cache/apt/archives /var/lib/apt/lists/*
