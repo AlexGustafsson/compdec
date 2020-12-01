@@ -5,4 +5,4 @@
 # Usage:
 #   ./tools/build.sh
 
-docker build -t compdec:compress - < ./tools/Dockerfile.compress
+docker build -t compdec:compress -f ./tools/Dockerfile.compress ./tools/

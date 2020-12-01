@@ -164,3 +164,24 @@ Strata size: 20
 "/path/to/compdec/data/dataset/thread0.zip",34136064,4096,"application/zip"
 ...
 ```
+
+#### compress.sh
+
+This is a tool to simplify interfacing with various compression algorithms. Due to its dependencies, it's preferably used via Docker. To build it run: `./tools/build.sh`.
+
+Instead of `./tools/compress.sh`, you may use `docker run -it compdec:compress`.
+
+Usage:
+```
+# Show versions of used tools
+./tools/compress.sh versions
+# Show this help dialog
+./tools/compress.sh help
+# Compress a file with all algorithms
+./tools/compress.sh compress <output prefix> <input file>
+```
+
+Example:
+```
+./tools/compress.sh compress output/compressed-file input/test-file
+```
