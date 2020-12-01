@@ -18,9 +18,44 @@ This project aims to fill this gap, answering the following questions:
 
 ## Table of Contents
 
+[Dataset](#dataset)<br />
 [Development](#development)<br />
 [Development - Quickstart](#development-quickstart)<br />
 [Development - Tools](#development-tools)
+
+## Dataset
+<a name="dataset"></a>
+
+### Samples
+
+In the samples directory are file chunks, visualizations and NIST Statistical tests performed on the dataset.
+
+Below is an example visualization and NIST test for the 7-zip tool.
+
+<p align="center">
+  <img src="./samples/visualizations/7z.png">
+</p>
+
+```
+...
+SUMMARY
+-------
+monobit_test                             0.23712867340389365 PASS
+frequency_within_block_test              0.28036273314388394 PASS
+runs_test                                0.11846733945572493 PASS
+longest_run_ones_in_a_block_test         0.5251306363531703 PASS
+binary_matrix_rank_test                  0.0                FAIL
+dft_test                                 0.753290157881333  PASS
+non_overlapping_template_matching_test   0.9999999736364428 PASS
+overlapping_template_matching_test       0.0                FAIL
+maurers_universal_test                   0.0                FAIL
+linear_complexity_test                   0.0                FAIL
+serial_test                              0.1862667243373838 PASS
+approximate_entropy_test                 0.18385318163162168 PASS
+cumulative_sums_test                     0.17770673343194865 PASS
+random_excursion_test                    0.24443855795386374 PASS
+random_excursion_variant_test            0.013229883923921373 PASS
+```
 
 ## Development
 <a name="development"></a>
