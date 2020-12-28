@@ -57,6 +57,8 @@ random_excursion_test                    0.24443855795386374 PASS
 random_excursion_variant_test            0.013229883923921373 PASS
 ```
 
+There are two pseudo-random samples, `random` and `urandom` taken from `/dev/random` and `/dev/urandom` respectively. There is also a true random sample, `true-random` taken from random.org. These random samples have one NIST test report each, available in the `.txt` file with the same name. Each "random" and random sample consists of 4096 bytes.
+
 ## Development
 <a name="development"></a>
 
