@@ -42,7 +42,10 @@ while read -r file; do
   fi
 
   # Sleep some time to not start thousands of containers. One run typically takes half a second or so
-  sleep 1
+  # Sleep every 10th file
+  if [[ $(($processed_files % 10)) -eq 0 ]]; then
+    sleep 1
+  fi
 done<<<"$files"
 
 echo "Compressed $processed_files files"
