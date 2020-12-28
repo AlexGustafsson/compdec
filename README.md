@@ -66,10 +66,10 @@ random_excursion_variant_test            0.013229883923921373 PASS
 To start, first clone this repository.
 
 ```sh
-git clone https://github.com/AlexGustafsson/compdec.git && cd compdec
+git clone --recurse-submodules https://github.com/AlexGustafsson/compdec.git && cd compdec
 ```
 
-To train the model, you'll need some training data. The paper uses the [GovDocs](https://digitalcorpora.org/corpora/files) dataset, but any larger dataset with a wide variety of files should work fine. For ease of use, a tool is included to download the data. The commands below download a small subset of the dataset, suitable for testing and developing.
+To train the model, you'll need some training data. The paper uses the [GovDocs](https://digitalcorpora.org/corpora/files) dataset, but any larger dataset with a wide variety of files should work fine. For ease of use, a tool is included to download the data. The commands below download a small subset of the dataset, suitable for testing and developing. This procedure can be repeated for any number of available threads.
 
 ```sh
 mkdir -p data
@@ -77,12 +77,10 @@ mkdir -p data
 unzip -d data/govdocs data/threads/thread0.zip
 ```
 
-This procedure can be repeated for any number of available threads.
-
-Given the base data, we can now compress it using the available tools.
+Given the base data, we can now compress it using the available tools. These tools require Docker and the Docker images available as part of this project. Build and tag them using `./tools/build.sh`.
 
 ```sh
-python3 ./tools/create-dataset.sh ./data/govdocs ./data/dataset
+./tools/create-dataset.sh ./data/govdocs ./data/dataset
 ```
 
 Now we'll need an index of the dataset, what files there are and how large they are. This is easily created using the following command. In this case we're picking chunks of maximum 4096 bytes, a common chunk size of commonly used file systems.
@@ -91,12 +89,18 @@ Now we'll need an index of the dataset, what files there are and how large they 
 python3 ./tools/create_index.py 4096 ./data/dataset > ./data/index.csv
 ```
 
-Optionally, we can perform stratified sampling. Read on for details.
+As part of our analysis we want to study the entropy of compressed files. This can be done by first creating a stratified sample.
 
 With the index created, one can perform stratified sampling to extract a sample from the population with the following command. In this case we're picking a strata of 20 samples and we're using the seed `seed`.
 
 ```sh
-python3 ./tools/stratified_sampling.py seed index.csv 20 > ./data/strata.csv
+python3 ./tools/stratified_sampling.py seed ./data/index.csv 20 > ./data/strata.csv
+```
+
+Using the stratified sample, we can run the NIST statistical test suite on them using the following command:
+
+```sh
+python3 ./tools/nist_test.py ./data/strata.csv > ./data/tests.txt
 ```
 
 ### Tools
@@ -246,4 +250,13 @@ Examples:
 ./tools/create-dataset.sh ./data/govdocs ./data/dataset
 # Only compress part of the dataset
 MAXIMUM_FILES=10 ./tools/create-dataset.sh ./data/govdocs ./data/dataset
+```
+
+#### nist_test.py
+
+This is a tool to perform the NIST statistical test suite on samples.
+
+Usage:
+```
+python3 ./tools/nist_test.py ./data/strata.csv
 ```
