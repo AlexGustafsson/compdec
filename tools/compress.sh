@@ -29,7 +29,7 @@ function versions() {
 }
 
 function compress() {
-  output_prefix="$1"
+  output_path="$1"
   shift
   input_files="$*"
 
@@ -41,30 +41,24 @@ function compress() {
   tar_file="$(mktemp)"
   tar -cf "$tar_file" $input_files &> /dev/null
 
-  rar a "$output_prefix.rar" "$temp_directory" > /dev/null
+  rar a "$output_path/compressed.rar" "$temp_directory" > /dev/null
 
-  gzip --force --fast --stdout "$tar_file" > "$output_prefix.gzip.fast"
-  gzip --force --best --stdout "$tar_file" > "$output_prefix.gzip.best"
+  gzip --force --stdout "$tar_file" > "$output_path/compressed.gzip"
 
-  zip -1 -r "$output_prefix.zip.fast" "$temp_directory" > /dev/null
-  zip -9 -r "$output_prefix.zip.best" "$temp_directory" > /dev/null
+  zip -r "$output_path/compressed.zip" "$temp_directory" > /dev/null
 
-  bzip2 --force --fast --stdout "$tar_file" > "$output_prefix.bzip2.fast"
-  bzip2 --force --best --stdout "$tar_file" > "$output_prefix.bzip2.best"
+  bzip2 --force --stdout "$tar_file" > "$output_path/compressed.bzip2"
 
-  7z a "$output_prefix.7z" "$temp_directory" > /dev/null
+  7z a "$output_path/compressed.7z" "$temp_directory" > /dev/null
 
-  command compress -c -r "$temp_directory" > "$output_prefix.compress"
+  command compress -c -r "$temp_directory" > "$output_path/compressed.compress"
 
-  lz4 -f -z -1 -c "$tar_file" > "$output_prefix.lz4.fast"
-  lz4 -f -z -9 -c "$tar_file" > "$output_prefix.lz4.best"
+  lz4 -f -z -c "$tar_file" > "$output_path/compressed.lz4"
 
-  brotli -0 --output="$output_prefix.brotli.fast" --force "$tar_file"
-  brotli -9 --output="$output_prefix.brotli.best" --force "$tar_file"
+  brotli --output="$output_path/compressed.brotli" --force "$tar_file"
 
   rm -r "$temp_directory"
   rm "$tar_file"
-  ls "$(dirname "$output_prefix")"
 }
 
 function help() {

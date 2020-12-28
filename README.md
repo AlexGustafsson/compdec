@@ -74,19 +74,29 @@ To train the model, you'll need some training data. The paper uses the [GovDocs]
 ```sh
 mkdir -p data
 ./tools/govdocs.sh download data threads/thread0.zip
-unzip -d data/govdocs data/thread0.zip
+unzip -d data/govdocs data/threads/thread0.zip
 ```
 
-Now we'll need a index of the dataset, what files there are and how large they are. This is easily created using the following command. In this case we're picking chunks of maximum 4096 bytes, a common chunk size of current file systems.
+This procedure can be repeated for any number of available threads.
+
+Given the base data, we can now compress it using the available tools.
 
 ```sh
-python3 ./tools/create_index.py 4096 ./data/govdocs > index.csv
+python3 ./tools/create-dataset.sh ./data/govdocs ./data/dataset
 ```
 
-With the index created, one can perform stratified sampling to extract a sample from the population with the following command. In this case we're picking a strata of 20 samples.
+Now we'll need an index of the dataset, what files there are and how large they are. This is easily created using the following command. In this case we're picking chunks of maximum 4096 bytes, a common chunk size of commonly used file systems.
 
 ```sh
-python3 ./tools/stratified_sampling.py index.csv 20 > strata.csv
+python3 ./tools/create_index.py 4096 ./data/dataset > ./data/index.csv
+```
+
+Optionally, we can perform stratified sampling. Read on for details.
+
+With the index created, one can perform stratified sampling to extract a sample from the population with the following command. In this case we're picking a strata of 20 samples and we're using the seed `seed`.
+
+```sh
+python3 ./tools/stratified_sampling.py seed index.csv 20 > ./data/strata.csv
 ```
 
 ### Tools
@@ -204,7 +214,7 @@ Strata size: 20
 
 This is a tool to simplify interfacing with various compression algorithms. Due to its dependencies, it's preferably used via Docker. To build it run: `./tools/build.sh`.
 
-Instead of `./tools/compress.sh`, you may use `docker run -it compdec:compress`.
+Instead of `./tools/compress.sh`, you may use `docker run -it --rm compdec:compress`.
 
 Usage:
 ```
@@ -219,4 +229,21 @@ Usage:
 Example:
 ```
 ./tools/compress.sh compress output/compressed-file input/test-file
+```
+
+#### create-dataset.sh
+
+This is a tool to simplify creating the dataset (compressing GovDocs).
+
+Usage:
+```
+./tools/create-dataset.sh <base-dir> <target-dir>
+```
+
+Examples:
+
+```
+./tools/create-dataset.sh ./data/govdocs ./data/dataset
+# Only compress part of the dataset
+MAXIMUM_FILES=10 ./tools/create-dataset.sh ./data/govdocs ./data/dataset
 ```
