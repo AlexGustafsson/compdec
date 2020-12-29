@@ -122,6 +122,13 @@ python3 ./models/cnn.py ./data/train-strata.csv ./data/test-strata.csv my-model-
 
 The training will create a checkpoints file under `./data/checkpoints/my-model-name`. The trained model will be created in `./data/models/my-model-name.h5`. The model will overwrite any file by the same name that may exist.
 
+To enable TensorBoard, set `use_tensorboard` to `True` and run the following command:
+
+```sh
+# --bind_all optional. Makes the site available to the local network
+tensorboard --logdir ./data/tensorboard --bind_all
+```
+
 With the model trained we can predict the algorithm of a file or chunk using the following script:
 
 ```sh

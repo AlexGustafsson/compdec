@@ -21,6 +21,7 @@ class_names = ["7z", "brotli", "bzip2", "compress", "gzip", "lz4", "rar", "zip"]
 print_samples = False
 test_samples = False
 train = True
+use_tensorboard = True
 
 expected_chunk_size=4096
 image_size=64
@@ -120,9 +121,12 @@ model.compile(optimizer='adam',
               loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
               metrics=['accuracy'])
 
+callbacks = []
+
 # define the checkpoint
 checkpoint_path = "./data/checkpoints/{}/{}.hdf5".format(sys.argv[3], "{epoch:04d}")
 checkpoint_directory = os.path.dirname(checkpoint_path)
+
 # Create checkpoints directory
 Path(checkpoint_directory).mkdir(parents=True, exist_ok=True)
 
@@ -133,6 +137,12 @@ checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
     verbose=1,
     save_freq=int(train_dataset_size / batch_size) * checkpoint_frequency
 )
+callbacks.append(checkpoint_callback)
+
+if use_tensorboard:
+    tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir="./data/tensorboard", histogram_freq=1)
+    callbacks.append(tensorboard_callback)
+
 
 # Get the latest checkpoint (if any)
 initial_epoch = 0
@@ -154,7 +164,7 @@ if train:
         steps_per_epoch=int(train_dataset_size / batch_size),
         validation_data=test_dataset,
         validation_steps=int(test_dataset_size / batch_size),
-        callbacks=[checkpoint_callback],
+        callbacks=callbacks,
         initial_epoch=initial_epoch
     )
 
