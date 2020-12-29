@@ -17,11 +17,20 @@ def main(seed: str, index_path: str, strata_size: int) -> None:
         reader = csv.reader(file, delimiter=",", quotechar='"')
         # Skip header
         next(reader, None)
+        skipped_samples = 0
         for file_path, file_size, chunk_size, chunks, extension in reader:
+            file_size = int(file_size)
+            chunk_size = int(chunk_size)
+            chunks = int(chunks)
             if extension not in samples:
                 samples[extension] = []
-            for i in range(0, int(chunks)):
-                samples[extension].append((file_path, i * int(chunk_size), int(chunk_size), extension))
+            for i in range(0, chunks):
+                offset = i * chunk_size
+                if offset + chunk_size >= file_size:
+                    skipped_samples += 1
+                    break
+                samples[extension].append((file_path, offset, chunk_size, extension))
+        print("Warning: skipping {} uneven chunks".format(skipped_samples), file=sys.stderr)
 
     # Total number of chunks for all samples
     total_samples = sum([len(samples[mime]) for mime in samples])
