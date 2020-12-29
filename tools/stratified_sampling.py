@@ -17,16 +17,16 @@ def main(seed: str, index_path: str, strata_size: int) -> None:
         reader = csv.reader(file, delimiter=",", quotechar='"')
         # Skip header
         next(reader, None)
-        for file_path, file_size, chunk_size, chunks, mime in reader:
-            if mime not in samples:
-                samples[mime] = []
+        for file_path, file_size, chunk_size, chunks, extension in reader:
+            if extension not in samples:
+                samples[extension] = []
             for i in range(0, int(chunks)):
-                samples[mime].append((file_path, i * int(chunk_size), int(chunk_size), mime))
+                samples[extension].append((file_path, i * int(chunk_size), int(chunk_size), extension))
 
     # Total number of chunks for all samples
     total_samples = sum([len(samples[mime]) for mime in samples])
     strata: List[Sample] = []
-    print("mime,samples,frequency", file=sys.stderr)
+    print("extension,samples,frequency", file=sys.stderr)
     for mime in samples:
         size = len(samples[mime])
         frequency = size / total_samples
@@ -41,7 +41,7 @@ def main(seed: str, index_path: str, strata_size: int) -> None:
     # Randomize the sample
     random.shuffle(strata)
 
-    print('"file path",offset,"chunk size",mime')
+    print('"file path",offset,"chunk size",extension')
     for sample in strata:
         print('"{}",{},{},"{}"'.format(*sample))
 

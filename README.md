@@ -105,6 +105,21 @@ Using the stratified sample, we can run the NIST statistical test suite on them 
 python3 ./tools/nist_test.py ./data/strata.csv > ./data/tests.txt
 ```
 
+We can now create two stratas, one for training and one for evaluation. This can be done using the same tool as previously.
+
+```sh
+python3 ./tools/stratified_sampling.py seed ./data/index.csv 80 > ./data/train-strata.csv
+python3 ./tools/stratified_sampling.py seed ./data/index.csv 20 > ./data/test-strata.csv
+```
+
+Be mindful that the stratified tool in itself does not ensure that values do not overlap. When training and evaluating for real purposes, ensure that the stratas do not overlap. Also make sure that you apply an appropriate split of the data. Although a small number was used in this example, you may use the full sample size of the dataset.
+
+Given the dataset, we can now train a model like so:
+
+```sh
+python3 ./tools/cnn.py ./data/train-strata.csv ./data/test-strata.csv
+```
+
 ### Tools
 <a name="development-tools"></a>
 
@@ -145,7 +160,7 @@ python3 tools/create_index.py 4096 ./data/dataset
 
 Example output:
 ```
-"file path","file size","chunk size","chunks",mime
+"file path","file size","chunk size","chunks",extension
 "/path/to/compdec/data/dataset/thread0.zip",322469174,4096,78728,"application/zip"
 "/path/to/compdec/data/dataset/909/909820.pdf",291569,4096,72,"application/pdf"
 "/path/to/compdec/data/dataset/135/135778.pdf",14013,4096,4,"application/pdf"
@@ -190,29 +205,28 @@ python3 tools/stratified_sampling.py 1.3035772690 index.txt 20
 
 Example output:
 ```
-mime,samples,frequency
-"application/zip",78728,0.35
-"application/pdf",37438,0.17
-"text/html",3590,0.016
-"text/plain",45112,0.2
-"image/jpeg",9875,0.044
-"application/msword",6659,0.03
-"text/xml",598,0.0027
-"application/vnd.ms-powerpoint",29038,0.13
-"image/gif",580,0.0026
-"text/csv",679,0.003
-"None",1275,0.0057
-"application/vnd.ms-excel",6953,0.031
-"application/postscript",2535,0.011
-"image/png",604,0.0027
-"application/x-shockwave-flash",362,0.0016
+extension,samples,frequency
+"zip",78728,0.35
+"pdf",37438,0.17
+"html",3590,0.016
+"txt",45112,0.2
+"jpeg",9875,0.044
+"docx",6659,0.03
+"xml",598,0.0027
+"ppt",29038,0.13
+"gif",580,0.0026
+"csv",679,0.003
+"xls",6953,0.031
+"ps",2535,0.011
+"png",604,0.0027
+"flash",362,0.0016
 Total samples: 224026
 Strata size: 20
-"file path",offset,"chunk size",mime
-"/path/to/compdec/data/dataset/thread0.zip",108646400,4096,"application/zip"
-"/path/to/compdec/data/dataset/191/191969.txt",125845504,4096,"text/plain"
-"/path/to/compdec/data/dataset/354/354930.doc",307200,4096,"application/msword"
-"/path/to/compdec/data/dataset/thread0.zip",34136064,4096,"application/zip"
+"file path",offset,"chunk size",extension
+"/path/to/compdec/data/dataset/thread0.zip",108646400,4096,"zip"
+"/path/to/compdec/data/dataset/191/191969.txt",125845504,4096,"txt"
+"/path/to/compdec/data/dataset/354/354930.doc",307200,4096,"docx"
+"/path/to/compdec/data/dataset/thread0.zip",34136064,4096,"zip"
 ...
 ```
 
