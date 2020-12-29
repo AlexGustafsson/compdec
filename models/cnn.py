@@ -106,13 +106,13 @@ if print_samples:
 # https://stackoverflow.com/questions/61249708/valueerror-no-gradients-provided-for-any-variable-tensorflow-2-0-keras
 
 model = models.Sequential()
-model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(image_size, image_size, 1)))
+model.add(layers.Conv2D(64, (3, 3), activation='relu', input_shape=(image_size, image_size, 1)))
 model.add(layers.MaxPooling2D((2, 2)))
-model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+model.add(layers.Conv2D(128, (3, 3), activation='relu'))
 model.add(layers.MaxPooling2D((2, 2)))
-model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+model.add(layers.Conv2D(128, (3, 3), activation='relu'))
 model.add(layers.Flatten())
-model.add(layers.Dense(64, activation='relu'))
+model.add(layers.Dense(128, activation='relu'))
 model.add(layers.Dense(len(class_names), activation="softmax"))
 
 model.summary()
