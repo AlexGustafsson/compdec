@@ -12,6 +12,7 @@ import os
 import sys
 import csv
 import numpy
+from pathlib import Path
 from math import floor, sqrt
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
@@ -24,6 +25,9 @@ expected_chunk_size=4096
 image_size=64
 epochs = 10
 batch_size = 64
+
+# Create checkpoints directory
+Path("./data/checkpoints").mkdir(parents=True, exist_ok=True)
 
 def get_dataset_size(strata_path: str):
     with open(strata_path, "r") as file:
@@ -117,13 +121,32 @@ model.compile(optimizer='adam',
               loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
               metrics=['accuracy'])
 
+# define the checkpoint
+checkpoint_path = "./data/checkpoints/{}-{}.hdf5".format(sys.argv[3], "{epoch:04d}")
+checkpoint_directory = os.path.dirname(checkpoint_path)
+
+# Create a callback that saves the model's weights
+checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
+    filepath=checkpoint_path,
+    save_weights_only=True,
+    verbose=1,
+    save_freq=batch_size
+)
+
+# Save the initial point
+model.save_weights(checkpoint_path.format(epoch=0))
+
 history = model.fit(
-        train_dataset,
-        epochs=epochs,
-        steps_per_epoch=int(train_dataset_size / batch_size),
-        validation_data=test_dataset,
-        validation_steps=int(test_dataset_size / batch_size),
-    )
+    train_dataset,
+    epochs=epochs,
+    steps_per_epoch=int(train_dataset_size / batch_size),
+    validation_data=test_dataset,
+    validation_steps=int(test_dataset_size / batch_size),
+    callbacks=[checkpoint_callback]
+)
+
+# Save the final training point
+model.save_weights(checkpoint_path.format(epoch=epochs))
 
 plt.plot(history.history['accuracy'], label='accuracy')
 plt.plot(history.history['val_accuracy'], label = 'val_accuracy')

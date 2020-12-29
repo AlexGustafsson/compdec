@@ -117,8 +117,10 @@ Be mindful that the stratified tool in itself does not ensure that values do not
 Given the dataset, we can now train a model like so:
 
 ```sh
-python3 ./tools/cnn.py ./data/train-strata.csv ./data/test-strata.csv
+python3 ./tools/cnn.py ./data/train-strata.csv ./data/test-strata.csv my-model-name
 ```
+
+The training will create a checkpoints file under `./data/checkpoints/my-model-name.hdf5`
 
 ### Tools
 <a name="development-tools"></a>
