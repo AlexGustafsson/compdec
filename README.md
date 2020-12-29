@@ -109,10 +109,10 @@ We can now create two stratas, one for training and one for evaluation. This can
 
 ```sh
 python3 ./tools/stratified_sampling.py seed ./data/index.csv 80 > ./data/train-strata.csv
-python3 ./tools/stratified_sampling.py seed ./data/index.csv 20 > ./data/test-strata.csv
+python3 ./tools/stratified_sampling.py seed ./data/index.csv 20 ./data/train-strata.csv > ./data/test-strata.csv
 ```
 
-Be mindful that the stratified tool in itself does not ensure that values do not overlap. When training and evaluating for real purposes, ensure that the stratas do not overlap. Also make sure that you apply an appropriate split of the data. Although a small number was used in this example, you may use the full sample size of the dataset.
+Make sure that you apply an appropriate split of the data. Although a small number was used in this example, you may use the full sample size of the dataset.
 
 Given the dataset, we can now train a model like so:
 

@@ -10,14 +10,27 @@ Sample = Tuple[str, int, int, str]
 # mime: Sample
 samples: Dict[str, List[Sample]] = {}
 
-def main(seed: str, index_path: str, strata_size: int) -> None:
+def main(seed: str, index_path: str, strata_size: int, blacklist_path: str) -> None:
     random.seed(seed)
+
+    # Map of file: set of chunk offsets, assumes same chunk size
+    blacklisted_chunks = dict()
+    if blacklist_path is not None:
+        with open(blacklist_path) as file:
+            reader = csv.reader(file, delimiter=",", quotechar='"')
+            # Skip header
+            next(reader, None)
+            for file_path, offset, chunk_size, extension in reader:
+                if file_path not in blacklisted_chunks:
+                    blacklisted_chunks[file_path] = set()
+                blacklisted_chunks[file_path].add(int(offset))
 
     with open(index_path) as file:
         reader = csv.reader(file, delimiter=",", quotechar='"')
         # Skip header
         next(reader, None)
         skipped_samples = 0
+        blacklisted_samples = 0
         for file_path, file_size, chunk_size, chunks, extension in reader:
             file_size = int(file_size)
             chunk_size = int(chunk_size)
@@ -29,8 +42,14 @@ def main(seed: str, index_path: str, strata_size: int) -> None:
                 if offset + chunk_size >= file_size:
                     skipped_samples += 1
                     break
+                if file_path in blacklisted_chunks and offset in blacklisted_chunks[file_path]:
+                    blacklisted_samples += 1
+                    continue
                 samples[extension].append((file_path, offset, chunk_size, extension))
-        print("Warning: skipping {} uneven chunks".format(skipped_samples), file=sys.stderr)
+        if skipped_samples > 0:
+            print("Warning: skipping {} uneven chunks".format(skipped_samples), file=sys.stderr)
+        if blacklisted_samples > 0:
+            print("Warning: skipping {} blacklisted chunks".format(blacklisted_samples), file=sys.stderr)
 
     # Total number of chunks for all samples
     total_samples = sum([len(samples[mime]) for mime in samples])
@@ -59,4 +78,5 @@ if __name__ == '__main__':
     seed = sys.argv[1]
     index_path = sys.argv[2]
     strata_size = int(sys.argv[3])
-    main(seed, index_path, strata_size)
+    blacklist_path = sys.argv[4] if len(sys.argv) > 4 else None
+    main(seed, index_path, strata_size, blacklist_path)

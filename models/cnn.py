@@ -19,14 +19,14 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 class_names = ["7z", "brotli", "bzip2", "compress", "gzip", "lz4", "rar", "zip"]
 
 print_samples = False
-test_samples = True
-train = False
+test_samples = False
+train = True
 
 expected_chunk_size=4096
 image_size=64
-epochs = 10
+epochs = 100
 batch_size = 64
-checkpoint_frequency = 5
+checkpoint_frequency = 10
 
 def get_dataset_size(strata_path: str):
     with open(strata_path, "r") as file:
