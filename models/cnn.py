@@ -3,10 +3,6 @@ import tensorflow as tf
 from tensorflow.keras import datasets, layers, models
 import matplotlib.pyplot as plt
 
-# Workaround for 3080 - only works if there is a GPU attached
-#physical_devices = tf.config.list_physical_devices('GPU')
-#tf.config.experimental.set_memory_growth(physical_devices[0], True)
-
 # Disable GPU support for now
 import os
 import sys
@@ -14,7 +10,6 @@ import csv
 import numpy
 from pathlib import Path
 from math import floor, sqrt
-os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 class_names = ["7z", "brotli", "bzip2", "compress", "gzip", "lz4", "rar", "zip"]
 
@@ -22,12 +17,20 @@ print_samples = False
 test_samples = False
 train = True
 use_tensorboard = True
+use_gpu = True
 
 expected_chunk_size=4096
 image_size=64
 epochs = 100
 batch_size = 64
-checkpoint_frequency = 10
+checkpoint_frequency = 5
+
+if use_gpu:
+    # Workaround for 3080 - only works if there is a GPU attached
+    physical_devices = tf.config.list_physical_devices('GPU')
+    tf.config.experimental.set_memory_growth(physical_devices[0], True)
+else:
+    os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 def get_dataset_size(strata_path: str):
     with open(strata_path, "r") as file:
