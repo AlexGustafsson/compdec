@@ -117,10 +117,31 @@ Be mindful that the stratified tool in itself does not ensure that values do not
 Given the dataset, we can now train a model like so:
 
 ```sh
-python3 ./tools/cnn.py ./data/train-strata.csv ./data/test-strata.csv my-model-name
+python3 ./models/cnn.py ./data/train-strata.csv ./data/test-strata.csv my-model-name
 ```
 
-The training will create a checkpoints file under `./data/checkpoints/my-model-name.hdf5`
+The training will create a checkpoints file under `./data/checkpoints/my-model-name`. The trained model will be created in `./data/models/my-model-name.h5`. The model will overwrite any file by the same name that may exist.
+
+With the model trained we can predict the algorithm of a file or chunk using the following script:
+
+```sh
+python3 ./models/predict.py ./data/models/my-model-name.h5 ./data/dataset/sample
+```
+
+We'll get an output like so;
+
+```
+7z       : 0.34%
+brotli   : 95.39%
+bzip2    : 0.20%
+compress : 0.06%
+gzip     : 3.07%
+lz4      : 0.57%
+rar      : 0.27%
+zip      : 0.09%
+```
+
+The prediction utility requires at least as many bytes as the model was trained with. By default this is 4096 bytes, but it can be changed.
 
 ### Tools
 <a name="development-tools"></a>
