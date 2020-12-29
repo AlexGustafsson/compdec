@@ -18,6 +18,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 class_names = ["7z", "brotli", "bzip2", "compress", "gzip", "lz4", "rar", "zip"]
 
 print_samples = False
+test_samples = True
 
 expected_chunk_size=4096
 image_size=64
@@ -33,7 +34,7 @@ def create_generator(strata_path: str):
     reader = csv.reader(strata_file, delimiter=",", quotechar='"')
     def generator():
         yielded = 0
-        print("Resetting generator")
+        # print("Resetting generator")
         # Reset the file (to support read)
         strata_file.seek(0)
         # Skip header
@@ -59,7 +60,7 @@ def create_generator(strata_path: str):
                 output = class_names.index(extension)
                 yield sample, output
                 yielded += 1
-        print("Exhausted dataset. Yielded {} items".format(yielded))
+        # print("Exhausted dataset. Yielded {} items".format(yielded))
     return generator
 
 def create_dataset(generator):
@@ -77,13 +78,13 @@ train_dataset = create_dataset(create_generator(sys.argv[1]))
 test_dataset_size = get_dataset_size(sys.argv[2])
 test_dataset = create_dataset(create_generator(sys.argv[2]))
 
-# Show 10 samples
+# Show some samples
 if print_samples:
     plt.figure(figsize=(10,10))
     dataset_iterator = train_dataset.__iter__()
     # Batched dataset will return a series of samples
     samples = next(dataset_iterator)
-    for i in range(25):
+    for i in range(min(25, batch_size)):
         sample = samples[0][i]
         label = samples[1][i]
         plt.subplot(5,5,i+1)
@@ -116,18 +117,6 @@ model.compile(optimizer='adam',
               loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
               metrics=['accuracy'])
 
-# tf.enable_eager_execution()
-
-# fit(
-#    x=None, y=None, batch_size=None, epochs=1, verbose=1, callbacks=None,
-#    validation_split=0.0, validation_data=None, shuffle=True, class_weight=None,
-#    sample_weight=None, initial_epoch=0, steps_per_epoch=None,
-#    validation_steps=None, validation_freq=1, max_queue_size=10, workers=1,
-#    use_multiprocessing=False, **kwargs
-#)
-
-# history = model.fit(x=dataset, epochs=epochs, steps_per_epoch=num_batches)
-# history = model.fit(create_generator(sys.argv[1]), epochs=epochs)
 history = model.fit(
         train_dataset,
         epochs=epochs,
@@ -146,9 +135,11 @@ plt.ylim([0, 1])
 plt.legend(loc='lower right')
 plt.show()
 
-# test_loss, test_acc = model.evaluate(test_images,  test_labels, verbose=2)
-
-# print(test_acc)
-
-#test_loss, test_acc = model.evaluate(test_images,  test_labels, verbose=2)
-#print(test_acc)
+# Test a batch
+if test_samples:
+    dataset_iterator = test_dataset.__iter__()
+    # Batched dataset will return a series of samples
+    samples, labels = next(dataset_iterator)
+    test_loss, test_accuracy = model.evaluate(samples, labels, verbose=2)
+    print("Loss:", test_loss)
+    print("Accuracy:", test_accuracy)
