@@ -20,14 +20,13 @@ class_names = ["7z", "brotli", "bzip2", "compress", "gzip", "lz4", "rar", "zip"]
 
 print_samples = False
 test_samples = True
+train = False
 
 expected_chunk_size=4096
 image_size=64
 epochs = 10
 batch_size = 64
-
-# Create checkpoints directory
-Path("./data/checkpoints").mkdir(parents=True, exist_ok=True)
+checkpoint_frequency = 5
 
 def get_dataset_size(strata_path: str):
     with open(strata_path, "r") as file:
@@ -122,41 +121,63 @@ model.compile(optimizer='adam',
               metrics=['accuracy'])
 
 # define the checkpoint
-checkpoint_path = "./data/checkpoints/{}-{}.hdf5".format(sys.argv[3], "{epoch:04d}")
+checkpoint_path = "./data/checkpoints/{}/{}.hdf5".format(sys.argv[3], "{epoch:04d}")
 checkpoint_directory = os.path.dirname(checkpoint_path)
+# Create checkpoints directory
+Path(checkpoint_directory).mkdir(parents=True, exist_ok=True)
 
 # Create a callback that saves the model's weights
 checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
     filepath=checkpoint_path,
     save_weights_only=True,
     verbose=1,
-    save_freq=batch_size
+    save_freq=int(train_dataset_size / batch_size) * checkpoint_frequency
 )
 
-# Save the initial point
-model.save_weights(checkpoint_path.format(epoch=0))
+# Get the latest checkpoint (if any)
+initial_epoch = 0
+saved_epochs = sorted([int(os.path.splitext(os.path.basename(file))[0]) for file in os.listdir(checkpoint_directory) if os.path.isfile(os.path.join(checkpoint_directory, file))], reverse=True)
+if len(saved_epochs) == 0:
+    print("Storing fresh model")
+    model.save_weights(checkpoint_path.format(epoch=0))
+else:
+    initial_epoch = saved_epochs[0]
+    checkpoint = checkpoint_path.format(epoch=initial_epoch)
+    print("Loading the latest checkpoint: {} (epoch {})".format(checkpoint, initial_epoch))
+    model.load_weights(checkpoint)
 
-history = model.fit(
-    train_dataset,
-    epochs=epochs,
-    steps_per_epoch=int(train_dataset_size / batch_size),
-    validation_data=test_dataset,
-    validation_steps=int(test_dataset_size / batch_size),
-    callbacks=[checkpoint_callback]
-)
+if train:
+    print("Training from epoch {}".format(initial_epoch))
+    history = model.fit(
+        train_dataset,
+        epochs=initial_epoch + epochs,
+        steps_per_epoch=int(train_dataset_size / batch_size),
+        validation_data=test_dataset,
+        validation_steps=int(test_dataset_size / batch_size),
+        callbacks=[checkpoint_callback],
+        initial_epoch=initial_epoch
+    )
 
-# Save the final training point
-model.save_weights(checkpoint_path.format(epoch=epochs))
+    # Save the final training point
+    model.save_weights(checkpoint_path.format(epoch=epochs))
 
-plt.plot(history.history['accuracy'], label='accuracy')
-plt.plot(history.history['val_accuracy'], label = 'val_accuracy')
-plt.plot(history.history['loss'], label='loss')
-plt.plot(history.history['val_loss'], label = 'val_loss')
-plt.xlabel('Epoch')
-plt.ylabel('Accuracy')
-plt.ylim([0, 1])
-plt.legend(loc='lower right')
-plt.show()
+    # Save the entire model
+    model_path = "./data/models/{}.h5".format(sys.argv[3])
+    model_directory = os.path.dirname(model_path)
+
+    # Create model directory
+    Path(model_directory).mkdir(parents=True, exist_ok=True)
+    model.save(model_path)
+
+    plt.plot(history.history['accuracy'], label='accuracy')
+    plt.plot(history.history['val_accuracy'], label = 'val_accuracy')
+    plt.plot(history.history['loss'], label='loss')
+    plt.plot(history.history['val_loss'], label = 'val_loss')
+    plt.xlabel('Epoch')
+    plt.ylabel('Accuracy')
+    plt.ylim([0, 1])
+    plt.legend(loc='lower right')
+    plt.show()
 
 # Test a batch
 if test_samples:
@@ -166,3 +187,19 @@ if test_samples:
     test_loss, test_accuracy = model.evaluate(samples, labels, verbose=2)
     print("Loss:", test_loss)
     print("Accuracy:", test_accuracy)
+
+    predictions = model.predict_on_batch(samples)
+    prediction_labels = ["{} ({:.4f})".format(class_names[numpy.argmax(prediction)], max(prediction)) for prediction in predictions]
+
+    plt.figure(figsize=(10,10))
+    # Batched dataset will return a series of samples
+    for i in range(min(25, len(samples))):
+        sample = samples[i]
+        label = labels[i]
+        plt.subplot(5,5,i+1)
+        plt.xticks([])
+        plt.yticks([])
+        plt.grid(False)
+        plt.imshow(sample, cmap=plt.cm.binary)
+        plt.xlabel("{} ({})".format(prediction_labels[i], class_names[label]))
+    plt.show()
