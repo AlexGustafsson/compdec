@@ -15,7 +15,7 @@ class_names = ["7z", "brotli", "bzip2", "compress", "gzip", "lz4", "rar", "zip"]
 
 print_samples = False
 test_samples = False
-train = True
+train = False
 use_tensorboard = True
 use_gpu = True
 
@@ -174,14 +174,6 @@ if train:
     # Save the final training point
     model.save_weights(checkpoint_path.format(epoch=epochs))
 
-    # Save the entire model
-    model_path = "./data/models/{}.h5".format(sys.argv[3])
-    model_directory = os.path.dirname(model_path)
-
-    # Create model directory
-    Path(model_directory).mkdir(parents=True, exist_ok=True)
-    model.save(model_path)
-
     plt.plot(history.history['accuracy'], label='accuracy')
     plt.plot(history.history['val_accuracy'], label = 'val_accuracy')
     plt.plot(history.history['loss'], label='loss')
@@ -191,6 +183,14 @@ if train:
     plt.ylim([0, 1])
     plt.legend(loc='lower right')
     plt.show()
+
+# Save the entire model
+model_path = "./data/models/{}.h5".format(sys.argv[3])
+model_directory = os.path.dirname(model_path)
+
+# Create model directory
+Path(model_directory).mkdir(parents=True, exist_ok=True)
+model.save(model_path)
 
 # Test a batch
 if test_samples:
