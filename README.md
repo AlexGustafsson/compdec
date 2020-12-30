@@ -107,11 +107,11 @@ Using the stratified sample, we can run the NIST statistical test suite on them 
 python3 ./tools/nist_test.py ./data/strata.csv > ./data/tests.txt
 ```
 
-We can now create two stratas, one for training and one for evaluation. This can be done using the same tool as previously.
+We can now create two stratas, one for training and one for evaluation. This can be done using the same tool as previously. Note that we're now using even sampling to ensure the same number of samples for each algorithm. This is to ensure that algorithms that perform bad (yield more chunks) are not over-represented.
 
 ```sh
-python3 ./tools/stratified_sampling.py seed ./data/index.csv 80 > ./data/training-strata.csv
-python3 ./tools/stratified_sampling.py seed ./data/index.csv 20 ./data/evaluation-strata.csv > ./data/test-strata.csv
+python3 ./tools/even_sampling.py seed ./data/index.csv 80 > ./data/training-strata.csv
+python3 ./tools/even_sampling.py seed ./data/index.csv 20 ./data/evaluation-strata.csv > ./data/test-strata.csv
 ```
 
 Make sure that you apply an appropriate split of the data. Although a small number was used in this example, you may use the full sample size of the dataset.
@@ -245,7 +245,48 @@ python3 ./tools/stratified_sampling.py <seed> <index path> <strata size>
 
 Example:
 ```sh
-python3 tools/stratified_sampling.py 1.3035772690 index.txt 20
+python3 tools/stratified_sampling.py 1.3035772690 index.csv 20
+```
+
+Example output:
+```
+extension,samples,frequency
+"zip",78728,0.35
+"pdf",37438,0.17
+"html",3590,0.016
+"txt",45112,0.2
+"jpeg",9875,0.044
+"docx",6659,0.03
+"xml",598,0.0027
+"ppt",29038,0.13
+"gif",580,0.0026
+"csv",679,0.003
+"xls",6953,0.031
+"ps",2535,0.011
+"png",604,0.0027
+"flash",362,0.0016
+Total samples: 224026
+Strata size: 20
+"file path",offset,"chunk size",extension
+"/path/to/compdec/data/dataset/thread0.zip",108646400,4096,"zip"
+"/path/to/compdec/data/dataset/191/191969.txt",125845504,4096,"txt"
+"/path/to/compdec/data/dataset/354/354930.doc",307200,4096,"docx"
+"/path/to/compdec/data/dataset/thread0.zip",34136064,4096,"zip"
+...
+```
+
+#### even_sampling.py
+
+This is a tool to perform an even sampling of a dataset.
+
+Usage:
+```sh
+python3 ./tools/even_sampling.py <seed> <index path> <strata size>
+```
+
+Example:
+```sh
+python3 tools/even_sampling.py 1.3035772690 index.csv 20
 ```
 
 Example output:
