@@ -1,0 +1,1360 @@
+/home/alex/Documents/GitHub/compdec/data/dataset/024279/compressed.bzip2
+++++-++---+++-+
+monobit_test                            0.12733419206704308     pass
+frequency_within_block_test             0.024075024251804446    pass
+runs_test                               0.6047900790942785      pass
+longest_run_ones_in_a_block_test        0.2935175808165793      pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.08296397049774902     pass
+non_overlapping_template_matching_test  0.999999990924128       pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.0981955087788362      pass
+approximate_entropy_test                0.1209186503118433      pass
+cumulative_sums_test                    0.08082555419016746     pass
+random_excursion_test                   0.0068582275505747      fail
+random_excursion_variant_test           0.13964939861042938     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/084112/compressed.7z
++-++-++---+++++
+monobit_test                            0.08478499612826781     pass
+frequency_within_block_test             0.00027325293384116003  fail
+runs_test                               0.05807135875860885     pass
+longest_run_ones_in_a_block_test        0.16588068872251285     pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.9514921825595101      pass
+non_overlapping_template_matching_test  0.9999993704951265      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.04629818933068466     pass
+approximate_entropy_test                0.04542730756553557     pass
+cumulative_sums_test                    0.060696609555942915    pass
+random_excursion_test                   0.3459723504524552      pass
+random_excursion_variant_test           0.4438896480780285      pass
+/home/alex/Documents/GitHub/compdec/data/dataset/886184/compressed.7z
+++++-++---+++++
+monobit_test                            0.9295680222776129      pass
+frequency_within_block_test             0.6194730310244608      pass
+runs_test                               0.8683368937274214      pass
+longest_run_ones_in_a_block_test        0.36215900810257695     pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.4231500170316603      pass
+non_overlapping_template_matching_test  0.9999214740585399      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.15482940659498728     pass
+approximate_entropy_test                0.40808474410655343     pass
+cumulative_sums_test                    0.9602165719598474      pass
+random_excursion_test                   0.01875380421700026     pass
+random_excursion_variant_test           0.23783441565348912     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/346322/compressed.7z
+++++-++---+++++
+monobit_test                            0.046730148971977026    pass
+frequency_within_block_test             0.7409646694844569      pass
+runs_test                               0.8508013163349667      pass
+longest_run_ones_in_a_block_test        0.24431529825330764     pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.38324103506621665     pass
+non_overlapping_template_matching_test  0.9999998522702868      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.036069382807955075    pass
+approximate_entropy_test                0.03344631682392089     pass
+cumulative_sums_test                    0.03611974506268467     pass
+random_excursion_test                   0.24078842124182367     pass
+random_excursion_variant_test           0.13763825510818276     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/143347/compressed.gzip
+-----++------++
+monobit_test                            2.1979381408627682e-07  fail
+frequency_within_block_test             0.003317880095343995    fail
+runs_test                               0.0                     fail
+longest_run_ones_in_a_block_test        0.00406984548442541     fail
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.9919105156352347      pass
+non_overlapping_template_matching_test  0.9998447145726076      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             7.262525063871715e-06   fail
+approximate_entropy_test                1.1712589856750677e-05  fail
+cumulative_sums_test                    3.78928581179494e-07    fail
+random_excursion_test                   0.017810445800463752    pass
+random_excursion_variant_test           0.14034173586948143     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/204681/compressed.brotli
+-+-+-++------+-
+monobit_test                            1.9046384271308594e-05  fail
+frequency_within_block_test             0.1083663595033625      pass
+runs_test                               0.0                     fail
+longest_run_ones_in_a_block_test        0.6784089888977886      pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.5701877750903236      pass
+non_overlapping_template_matching_test  0.9999998933646718      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.0013729563036452917   fail
+approximate_entropy_test                0.001605011751190586    fail
+cumulative_sums_test                    1.3445573876724737e-05  fail
+random_excursion_test                   0.05594091315760427     pass
+random_excursion_variant_test           0.005962078532093712    fail
+/home/alex/Documents/GitHub/compdec/data/dataset/216028/compressed.compress
+------+------++
+monobit_test                            0.0                     fail
+frequency_within_block_test             0.0                     fail
+runs_test                               0.0                     fail
+longest_run_ones_in_a_block_test        6.225099077436168e-13   fail
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                1.3037340567923457e-59  fail
+non_overlapping_template_matching_test  0.8625202197547465      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.0                     fail
+approximate_entropy_test                0.0                     fail
+cumulative_sums_test                    0.0                     fail
+random_excursion_test                   0.04268185382272985     pass
+random_excursion_variant_test           0.46520881845214174     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/611880/compressed.compress
+---+--+--------
+monobit_test                            2.486212046041959e-293  fail
+frequency_within_block_test             0.0                     fail
+runs_test                               0.0                     fail
+longest_run_ones_in_a_block_test        0.032045981470189326    pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                5.2209859240527625e-09  fail
+non_overlapping_template_matching_test  0.9098905143278363      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.0                     fail
+approximate_entropy_test                0.0                     fail
+cumulative_sums_test                    0.0                     fail
+random_excursion_test                   2.772041441002831e-12   fail
+random_excursion_variant_test           0.004266724822176129    fail
+/home/alex/Documents/GitHub/compdec/data/dataset/247889/compressed.lz4
++-++-++------++
+monobit_test                            0.011766596087704776    pass
+frequency_within_block_test             6.693802845172151e-14   fail
+runs_test                               0.15778003042058728     pass
+longest_run_ones_in_a_block_test        0.1972920526940858      pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.8711314915971293      pass
+non_overlapping_template_matching_test  0.9999971073332322      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.0004296480388585252   fail
+approximate_entropy_test                0.0004579997595451798   fail
+cumulative_sums_test                    0.00028221007851403357  fail
+random_excursion_test                   0.059826867690972486    pass
+random_excursion_variant_test           0.03997960294625698     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/409022/compressed.rar
+++++-++---++-++
+monobit_test                            0.011402467515430607    pass
+frequency_within_block_test             0.05647892280432351     pass
+runs_test                               0.029316314806263784    pass
+longest_run_ones_in_a_block_test        0.2030681954178926      pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.19090376680005033     pass
+non_overlapping_template_matching_test  0.9999999949787287      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.0504165537595011      pass
+approximate_entropy_test                0.043385094386883934    pass
+cumulative_sums_test                    0.0074574775343683175   fail
+random_excursion_test                   0.06943380857279814     pass
+random_excursion_variant_test           0.10574168173746074     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/912598/compressed.gzip
++-++-++---+++++
+monobit_test                            0.42632554338440815     pass
+frequency_within_block_test             2.4698391213729907e-07  fail
+runs_test                               0.8364546607781184      pass
+longest_run_ones_in_a_block_test        0.2291862256121394      pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.35619779757689185     pass
+non_overlapping_template_matching_test  0.999999993532431       pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.16160240921941094     pass
+approximate_entropy_test                0.162899213014662       pass
+cumulative_sums_test                    0.1349388305020438      pass
+random_excursion_test                   0.01018277273024949     pass
+random_excursion_variant_test           0.08735395143236561     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/784781/compressed.rar
+--++-++---++-++
+monobit_test                            0.0031781393867332587   fail
+frequency_within_block_test             0.002575761857508512    fail
+runs_test                               0.8565997474735992      pass
+longest_run_ones_in_a_block_test        0.5994365808356051      pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.04919073586309078     pass
+non_overlapping_template_matching_test  0.9999999975497471      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.07796535755557833     pass
+approximate_entropy_test                0.08123718300094072     pass
+cumulative_sums_test                    0.0008664804845848195   fail
+random_excursion_test                   0.0973126716341561      pass
+random_excursion_variant_test           0.0747913775869442      pass
+/home/alex/Documents/GitHub/compdec/data/dataset/999914/compressed.gzip
+---+-++------++
+monobit_test                            1.405044586683936e-16   fail
+frequency_within_block_test             6.718330182313351e-14   fail
+runs_test                               0.0                     fail
+longest_run_ones_in_a_block_test        0.9027203549367968      pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.6193279073812883      pass
+non_overlapping_template_matching_test  0.9999659273663752      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             5.108163933539401e-20   fail
+approximate_entropy_test                5.968527930206919e-20   fail
+cumulative_sums_test                    0.0                     fail
+random_excursion_test                   0.04888197466974526     pass
+random_excursion_variant_test           0.34555702343130057     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/089497/compressed.brotli
+++++-++---+++++
+monobit_test                            0.3888050759275234      pass
+frequency_within_block_test             0.03799477024479717     pass
+runs_test                               0.06129672287165484     pass
+longest_run_ones_in_a_block_test        0.936746613439959       pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.11372747010874135     pass
+non_overlapping_template_matching_test  0.9999997524367892      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.025299013296636936    pass
+approximate_entropy_test                0.05322698164853953     pass
+cumulative_sums_test                    0.241164761186079       pass
+random_excursion_test                   0.3407308540982032      pass
+random_excursion_variant_test           0.18275974962510588     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/670823/compressed.compress
+---+--+-------+
+monobit_test                            2.5197145145187043e-133 fail
+frequency_within_block_test             2.943737582634833e-121  fail
+runs_test                               0.0                     fail
+longest_run_ones_in_a_block_test        0.10534523376022671     pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.0043854990807619      fail
+non_overlapping_template_matching_test  0.9998419696950734      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.0                     fail
+approximate_entropy_test                2.9343661591628922e-242 fail
+cumulative_sums_test                    0.0                     fail
+random_excursion_test                   2.399262899280151e-20   fail
+random_excursion_variant_test           0.04550026389635844     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/202771/compressed.gzip
++-++-++---+++-+
+monobit_test                            0.046730148971977026    pass
+frequency_within_block_test             0.00014830482888232514  fail
+runs_test                               0.5883726384961999      pass
+longest_run_ones_in_a_block_test        0.4745019545507693      pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.9676503761747657      pass
+non_overlapping_template_matching_test  0.9999996163814698      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.46111867308080207     pass
+approximate_entropy_test                0.45596251559477413     pass
+cumulative_sums_test                    0.029684636502680162    pass
+random_excursion_test                   0.0006231670673947749   fail
+random_excursion_variant_test           0.25005481594088286     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/700743/compressed.lz4
+--+--++------++
+monobit_test                            0.0022100721382414816   fail
+frequency_within_block_test             3.116506178931482e-25   fail
+runs_test                               0.13769496627806177     pass
+longest_run_ones_in_a_block_test        0.0007404889296722309   fail
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.31550151992337705     pass
+non_overlapping_template_matching_test  0.99999333305623        pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.0013619782376360398   fail
+approximate_entropy_test                0.001281593643595023    fail
+cumulative_sums_test                    9.565565108893281e-06   fail
+random_excursion_test                   0.30424054209958507     pass
+random_excursion_variant_test           0.2008251226951454      pass
+/home/alex/Documents/GitHub/compdec/data/dataset/238077/compressed.7z
+++++-++---+++++
+monobit_test                            0.3591273879124584      pass
+frequency_within_block_test             0.5278663009722104      pass
+runs_test                               0.727151809234122       pass
+longest_run_ones_in_a_block_test        0.15799258394474536     pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.1442920554401154      pass
+non_overlapping_template_matching_test  0.9999999961700393      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.06661355337390538     pass
+approximate_entropy_test                0.25566559606792405     pass
+cumulative_sums_test                    0.04703132304444502     pass
+random_excursion_test                   0.28512540463805736     pass
+random_excursion_variant_test           0.036691601701967       pass
+/home/alex/Documents/GitHub/compdec/data/dataset/455348/compressed.zip
++-++-++---++-++
+monobit_test                            0.1638871299496036      pass
+frequency_within_block_test             2.593331450199639e-10   fail
+runs_test                               0.9029910804300337      pass
+longest_run_ones_in_a_block_test        0.5436735705839677      pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.831392782437341       pass
+non_overlapping_template_matching_test  0.9999980756454773      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.2803550426662463      pass
+approximate_entropy_test                0.4553011363005719      pass
+cumulative_sums_test                    0.005405275631086726    fail
+random_excursion_test                   0.14823128649396197     pass
+random_excursion_variant_test           0.0808555983700523      pass
+/home/alex/Documents/GitHub/compdec/data/dataset/609204/compressed.lz4
+-----++------++
+monobit_test                            0.0                     fail
+frequency_within_block_test             0.0                     fail
+runs_test                               0.0                     fail
+longest_run_ones_in_a_block_test        3.5181070259298916e-35  fail
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.39440146137979554     pass
+non_overlapping_template_matching_test  0.7631716451785886      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.0                     fail
+approximate_entropy_test                0.0                     fail
+cumulative_sums_test                    0.0                     fail
+random_excursion_test                   0.012228140467104357    pass
+random_excursion_variant_test           0.41421617824252505     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/404821/compressed.gzip
+++++-++---+++++
+monobit_test                            0.19612190160538825     pass
+frequency_within_block_test             0.8320879815250687      pass
+runs_test                               0.5743293015308653      pass
+longest_run_ones_in_a_block_test        0.06016152144329308     pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.31550151992337705     pass
+non_overlapping_template_matching_test  0.9999999994981564      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.02127255313745842     pass
+approximate_entropy_test                0.0776488944146856      pass
+cumulative_sums_test                    0.28339731349234754     pass
+random_excursion_test                   0.466076731378954       pass
+random_excursion_variant_test           0.5367058232556736      pass
+/home/alex/Documents/GitHub/compdec/data/dataset/576100/compressed.bzip2
+++++-++---++++-
+monobit_test                            0.9647496261326772      pass
+frequency_within_block_test             0.01943779081065318     pass
+runs_test                               0.3146906565407889      pass
+longest_run_ones_in_a_block_test        0.5500979405998352      pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.927294304425979       pass
+non_overlapping_template_matching_test  0.9999999985182163      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.1674243224107348      pass
+approximate_entropy_test                0.327564832118605       pass
+cumulative_sums_test                    0.7633317041288248      pass
+random_excursion_test                   0.1615199714407348      pass
+random_excursion_variant_test           0.009785073204469964    fail
+/home/alex/Documents/GitHub/compdec/data/dataset/876347/compressed.zip
+-+++-++---++-++
+monobit_test                            0.009727760387896073    fail
+frequency_within_block_test             0.09433564976456338     pass
+runs_test                               0.10747720741364755     pass
+longest_run_ones_in_a_block_test        0.2167673264002075      pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.48418971212442286     pass
+non_overlapping_template_matching_test  0.9999068702647728      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.022421201023285667    pass
+approximate_entropy_test                0.02416103251932437     pass
+cumulative_sums_test                    0.0077246114206941385   fail
+random_excursion_test                   0.06347699539676763     pass
+random_excursion_variant_test           0.3704297910485608      pass
+/home/alex/Documents/GitHub/compdec/data/dataset/590619/compressed.zip
+---+-++------++
+monobit_test                            2.9514019251157184e-07  fail
+frequency_within_block_test             0.006947621692843167    fail
+runs_test                               0.0                     fail
+longest_run_ones_in_a_block_test        0.9344743282290837      pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.5840371274443733      pass
+non_overlapping_template_matching_test  0.9999999965986515      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             1.891558464999587e-14   fail
+approximate_entropy_test                1.8552009532148488e-14  fail
+cumulative_sums_test                    4.2675000511138705e-07  fail
+random_excursion_test                   0.027162041410256018    pass
+random_excursion_variant_test           0.12133525035848217     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/263561/compressed.brotli
+-+-+-++------++
+monobit_test                            3.9514588074088767e-07  fail
+frequency_within_block_test             0.23200909779895534     pass
+runs_test                               0.0                     fail
+longest_run_ones_in_a_block_test        0.11930932334616226     pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.8472425314680376      pass
+non_overlapping_template_matching_test  1.00000003176804        pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             9.355514356367986e-05   fail
+approximate_entropy_test                0.00010428572832424295  fail
+cumulative_sums_test                    5.095800610366297e-07   fail
+random_excursion_test                   0.06558641417654175     pass
+random_excursion_variant_test           0.22127181567246967     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/142999/compressed.lz4
++-+---+-----+++
+monobit_test                            0.658531366498405       pass
+frequency_within_block_test             6.278010803661257e-31   fail
+runs_test                               0.10411472453450377     pass
+longest_run_ones_in_a_block_test        3.502856938168937e-08   fail
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.001919034809808951    fail
+non_overlapping_template_matching_test  0.9999465252852255      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             3.1148465218058714e-08  fail
+approximate_entropy_test                4.250313112815807e-08   fail
+cumulative_sums_test                    0.060696609555942915    pass
+random_excursion_test                   0.29500362837181165     pass
+random_excursion_variant_test           0.5017419462882124      pass
+/home/alex/Documents/GitHub/compdec/data/dataset/828009/compressed.7z
+++---++-----+++
+monobit_test                            0.20387721682782894     pass
+frequency_within_block_test             0.6546915226910743      pass
+runs_test                               0.0005257476638505192   fail
+longest_run_ones_in_a_block_test        0.0075650790917004065   fail
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.3668674386336793      pass
+non_overlapping_template_matching_test  0.999998870797933       pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             6.72070395952509e-06    fail
+approximate_entropy_test                5.1336368226419386e-06  fail
+cumulative_sums_test                    0.17770673343194865     pass
+random_excursion_test                   0.08386736783734577     pass
+random_excursion_variant_test           0.048706360769437095    pass
+/home/alex/Documents/GitHub/compdec/data/dataset/050739/compressed.compress
+--------------+
+monobit_test                            1.3850035504074213e-305 fail
+frequency_within_block_test             0.0                     fail
+runs_test                               0.0                     fail
+longest_run_ones_in_a_block_test        0.0017520127377476614   fail
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                1.5979877034849155e-15  fail
+non_overlapping_template_matching_test  1.7732078282993844e-12  fail
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.0                     fail
+approximate_entropy_test                0.0                     fail
+cumulative_sums_test                    0.0                     fail
+random_excursion_test                   2.716442921343924e-06   fail
+random_excursion_variant_test           0.4226780741706354      pass
+/home/alex/Documents/GitHub/compdec/data/dataset/726912/compressed.brotli
++-++-++-----+++
+monobit_test                            0.03483495113024529     pass
+frequency_within_block_test             0.0028294103669848155   fail
+runs_test                               0.775799690320798       pass
+longest_run_ones_in_a_block_test        0.06788906483076636     pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.028525021155607486    pass
+non_overlapping_template_matching_test  0.999999993917942       pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.008199862244890969    fail
+approximate_entropy_test                0.007719250250054272    fail
+cumulative_sums_test                    0.018540047043903884    pass
+random_excursion_test                   0.4323214318155436      pass
+random_excursion_variant_test           0.0762601094832935      pass
+/home/alex/Documents/GitHub/compdec/data/dataset/177770/compressed.brotli
+-+++-++------++
+monobit_test                            0.004677734981047275    fail
+frequency_within_block_test             0.04514585919344284     pass
+runs_test                               0.01698334191230052     pass
+longest_run_ones_in_a_block_test        0.269970296511989       pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.06954663381289176     pass
+non_overlapping_template_matching_test  0.9999999797019301      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             7.750389961507467e-06   fail
+approximate_entropy_test                7.856304734996081e-06   fail
+cumulative_sums_test                    0.006243549956527872    fail
+random_excursion_test                   0.09379486396547838     pass
+random_excursion_variant_test           0.04520135297652211     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/089497/compressed.compress
+------+------++
+monobit_test                            0.0                     fail
+frequency_within_block_test             0.0                     fail
+runs_test                               0.0                     fail
+longest_run_ones_in_a_block_test        1.4354288871097048e-05  fail
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                3.4948123364236863e-181 fail
+non_overlapping_template_matching_test  0.8161240093467858      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.0                     fail
+approximate_entropy_test                0.0                     fail
+cumulative_sums_test                    0.0                     fail
+random_excursion_test                   0.04849648531981453     pass
+random_excursion_variant_test           0.11134069875554081     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/642316/compressed.zip
+++++-++-----+-+
+monobit_test                            0.5806557179071985      pass
+frequency_within_block_test             0.6665541562326873      pass
+runs_test                               0.17361819172029153     pass
+longest_run_ones_in_a_block_test        0.29075936648028505     pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.330390048848776       pass
+non_overlapping_template_matching_test  0.9995316240714404      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.0005932225828943318   fail
+approximate_entropy_test                0.0005782882709930089   fail
+cumulative_sums_test                    0.4355249749001717      pass
+random_excursion_test                   0.006854233712397284    fail
+random_excursion_variant_test           0.0376353137873143      pass
+/home/alex/Documents/GitHub/compdec/data/dataset/084112/compressed.compress
+---+--+-------+
+monobit_test                            3.43336e-319            fail
+frequency_within_block_test             0.0                     fail
+runs_test                               0.0                     fail
+longest_run_ones_in_a_block_test        0.03652886728108869     pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                2.0590649300554932e-11  fail
+non_overlapping_template_matching_test  0.999999837651771       pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.0                     fail
+approximate_entropy_test                0.0                     fail
+cumulative_sums_test                    0.0                     fail
+random_excursion_test                   2.772041441002831e-12   fail
+random_excursion_variant_test           0.17006696145390474     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/948145/compressed.bzip2
+++++-++---++++-
+monobit_test                            0.12191242484819009     pass
+frequency_within_block_test             0.47989639974291104     pass
+runs_test                               0.6842598589662027      pass
+longest_run_ones_in_a_block_test        0.43115485659820635     pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.3405643076037761      pass
+non_overlapping_template_matching_test  0.9999999219640084      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.04632354636870074     pass
+approximate_entropy_test                0.13274405619169102     pass
+cumulative_sums_test                    0.08411878574967258     pass
+random_excursion_test                   0.5243883671933072      pass
+random_excursion_variant_test           0.0022447350498676355   fail
+/home/alex/Documents/GitHub/compdec/data/dataset/119025/compressed.bzip2
+---+-++-------+
+monobit_test                            2.50079844912166e-11    fail
+frequency_within_block_test             1.4112908258940253e-23  fail
+runs_test                               0.0                     fail
+longest_run_ones_in_a_block_test        0.22212865292184583     pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.7303044900235647      pass
+non_overlapping_template_matching_test  0.9999996167651243      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             1.1105051998759596e-12  fail
+approximate_entropy_test                4.995927574794692e-12   fail
+cumulative_sums_test                    1.0635936575909e-13     fail
+random_excursion_test                   0.0033394053964805014   fail
+random_excursion_variant_test           0.3427817111479114      pass
+/home/alex/Documents/GitHub/compdec/data/dataset/746124/compressed.brotli
+-++--++------++
+monobit_test                            0.0022930048757819543   fail
+frequency_within_block_test             0.8627005654957259      pass
+runs_test                               0.14568389217168307     pass
+longest_run_ones_in_a_block_test        0.004303744860329855    fail
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.440972669684506       pass
+non_overlapping_template_matching_test  0.9999997092028955      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.00861047322114926     fail
+approximate_entropy_test                0.00593788211544808     fail
+cumulative_sums_test                    0.0022774800605416257   fail
+random_excursion_test                   0.44543139162932044     pass
+random_excursion_variant_test           0.1948506486088695      pass
+/home/alex/Documents/GitHub/compdec/data/dataset/437945/compressed.lz4
+------+-------+
+monobit_test                            0.0                     fail
+frequency_within_block_test             0.0                     fail
+runs_test                               0.0                     fail
+longest_run_ones_in_a_block_test        1.7314292632407593e-09  fail
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                2.634557167075184e-19   fail
+non_overlapping_template_matching_test  0.7860602856643931      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.0                     fail
+approximate_entropy_test                0.0                     fail
+cumulative_sums_test                    0.0                     fail
+random_excursion_test                   2.72540772290283e-16    fail
+random_excursion_variant_test           0.01009731464750722     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/799565/compressed.rar
+++++-++---+++++
+monobit_test                            0.3888050759275234      pass
+frequency_within_block_test             0.9767533038887282      pass
+runs_test                               0.7601655545379109      pass
+longest_run_ones_in_a_block_test        0.936757370115699       pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.5497121687806658      pass
+non_overlapping_template_matching_test  0.9999999974569574      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.899106381726178       pass
+approximate_entropy_test                0.9751497057527971      pass
+cumulative_sums_test                    0.39585490170159776     pass
+random_excursion_test                   0.010092613545852822    pass
+random_excursion_variant_test           0.3395660566341503      pass
+/home/alex/Documents/GitHub/compdec/data/dataset/840483/compressed.rar
++-++-++---++-++
+monobit_test                            0.010704089186317817    pass
+frequency_within_block_test             0.00014295207556634236  fail
+runs_test                               0.25384281650688734     pass
+longest_run_ones_in_a_block_test        0.3464063720217078      pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.7303044900235647      pass
+non_overlapping_template_matching_test  0.9999998083483567      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.03891262179567605     pass
+approximate_entropy_test                0.03862110592801758     pass
+cumulative_sums_test                    0.0017997859990579457   fail
+random_excursion_test                   0.16011746817226297     pass
+random_excursion_variant_test           0.3061360394008035      pass
+/home/alex/Documents/GitHub/compdec/data/dataset/935803/compressed.zip
++-++-++---+++-+
+monobit_test                            0.23277433876765852     pass
+frequency_within_block_test             2.560065784908067e-06   fail
+runs_test                               0.7714661217299413      pass
+longest_run_ones_in_a_block_test        0.8978995951735521      pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.9111982762288882      pass
+non_overlapping_template_matching_test  0.99999999997162        pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.3946297314790404      pass
+approximate_entropy_test                0.6736459288067498      pass
+cumulative_sums_test                    0.2602178348042161      pass
+random_excursion_test                   0.009213496691098501    fail
+random_excursion_variant_test           0.35561106109523904     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/212386/compressed.compress
+------+-------+
+monobit_test                            1.0875948405835387e-286 fail
+frequency_within_block_test             0.0                     fail
+runs_test                               0.0                     fail
+longest_run_ones_in_a_block_test        0.0018850597272738365   fail
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                1.5049918677833453e-17  fail
+non_overlapping_template_matching_test  0.9999482948984332      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.0                     fail
+approximate_entropy_test                0.0                     fail
+cumulative_sums_test                    0.0                     fail
+random_excursion_test                   2.772041441002831e-12   fail
+random_excursion_variant_test           0.3911725228101394      pass
+/home/alex/Documents/GitHub/compdec/data/dataset/806308/compressed.bzip2
+++++-++---++-++
+monobit_test                            0.020330378235718       pass
+frequency_within_block_test             0.45838697364786407     pass
+runs_test                               0.18595655934540162     pass
+longest_run_ones_in_a_block_test        0.014372518829286295    pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.7687377869555412      pass
+non_overlapping_template_matching_test  0.9999777664056263      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.47682709205295853     pass
+approximate_entropy_test                0.47022683798843873     pass
+cumulative_sums_test                    0.008000410062733998    fail
+random_excursion_test                   0.048309687416707665    pass
+random_excursion_variant_test           0.04507887380807857     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/670823/compressed.brotli
+---+-++-------+
+monobit_test                            2.3408598791378168e-15  fail
+frequency_within_block_test             2.0352277526642714e-38  fail
+runs_test                               0.0                     fail
+longest_run_ones_in_a_block_test        0.076460343253521       pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.4231500170316603      pass
+non_overlapping_template_matching_test  0.9999995755112235      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             8.183589987159307e-117  fail
+approximate_entropy_test                1.763776931347485e-90   fail
+cumulative_sums_test                    6.661338147750939e-16   fail
+random_excursion_test                   1.1117896706996305e-05  fail
+random_excursion_variant_test           0.563702861650773       pass
+/home/alex/Documents/GitHub/compdec/data/dataset/579377/compressed.lz4
+---+--+-------+
+monobit_test                            1.2652824202456602e-243 fail
+frequency_within_block_test             0.0                     fail
+runs_test                               0.0                     fail
+longest_run_ones_in_a_block_test        0.09201758702807437     pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.002274808208734145    fail
+non_overlapping_template_matching_test  0.9999679856859265      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             2.781100757855862e-290  fail
+approximate_entropy_test                2.5453956777387133e-292 fail
+cumulative_sums_test                    0.0                     fail
+random_excursion_test                   3.941693973759507e-14   fail
+random_excursion_variant_test           0.10247043485974938     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/470568/compressed.zip
+--+--++-------+
+monobit_test                            0.0007522118840562145   fail
+frequency_within_block_test             1.794041500356012e-64   fail
+runs_test                               0.4412375944934385      pass
+longest_run_ones_in_a_block_test        0.004716552259313858    fail
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.9919105156352347      pass
+non_overlapping_template_matching_test  0.9997649824818123      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             5.883758069852312e-07   fail
+approximate_entropy_test                9.712864098233989e-07   fail
+cumulative_sums_test                    1.1497866772014476e-06  fail
+random_excursion_test                   0.00036911487682725233  fail
+random_excursion_variant_test           0.0934924836898357      pass
+/home/alex/Documents/GitHub/compdec/data/dataset/834741/compressed.compress
+------+-------+
+monobit_test                            4.269711781735332e-279  fail
+frequency_within_block_test             4.625320155548495e-241  fail
+runs_test                               0.0                     fail
+longest_run_ones_in_a_block_test        0.0027028025492512125   fail
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                1.203612188164046e-14   fail
+non_overlapping_template_matching_test  0.9999942729002392      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.0                     fail
+approximate_entropy_test                0.0                     fail
+cumulative_sums_test                    0.0                     fail
+random_excursion_test                   4.4967747912589616e-14  fail
+random_excursion_variant_test           0.2750923766358911      pass
+/home/alex/Documents/GitHub/compdec/data/dataset/510972/compressed.gzip
+-+++-++------++
+monobit_test                            0.0067916113271957795   fail
+frequency_within_block_test             0.08867269406107421     pass
+runs_test                               0.5239674363392984      pass
+longest_run_ones_in_a_block_test        0.4454600640903477      pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.2086754261311944      pass
+non_overlapping_template_matching_test  0.9999943468447192      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.0008467369086834741   fail
+approximate_entropy_test                0.0006299572567015116   fail
+cumulative_sums_test                    0.0036021477797483215   fail
+random_excursion_test                   0.3008519143536052      pass
+random_excursion_variant_test           0.21793240810583092     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/710118/compressed.7z
+++++-++---+++++
+monobit_test                            0.7739116171666026      pass
+frequency_within_block_test             0.7631715046884687      pass
+runs_test                               0.8680118116115471      pass
+longest_run_ones_in_a_block_test        0.4433080658716212      pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.640938811519079       pass
+non_overlapping_template_matching_test  0.9999969670016449      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.5970188767806158      pass
+approximate_entropy_test                0.9100269000684357      pass
+cumulative_sums_test                    0.2110593106878751      pass
+random_excursion_test                   0.021353202253094766    pass
+random_excursion_variant_test           0.029839881131301826    pass
+/home/alex/Documents/GitHub/compdec/data/dataset/346322/compressed.zip
+-+++-++-------+
+monobit_test                            0.0008822477975444363   fail
+frequency_within_block_test             0.035740602951289495    pass
+runs_test                               0.07787223775349321     pass
+longest_run_ones_in_a_block_test        0.3805591101879627      pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.8871244417960973      pass
+non_overlapping_template_matching_test  0.9999835101384789      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             1.4335533584137445e-07  fail
+approximate_entropy_test                1.2155291163035898e-07  fail
+cumulative_sums_test                    0.0009222142437304015   fail
+random_excursion_test                   3.941693973759507e-14   fail
+random_excursion_variant_test           0.41421617824252505     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/024279/compressed.rar
++-++-++---+++++
+monobit_test                            0.27891618146229724     pass
+frequency_within_block_test             2.931442102952565e-08   fail
+runs_test                               0.720239822582682       pass
+longest_run_ones_in_a_block_test        0.2956589682848376      pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.8711314915971293      pass
+non_overlapping_template_matching_test  0.9999986666413038      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.9449598223257549      pass
+approximate_entropy_test                0.9788301145022554      pass
+cumulative_sums_test                    0.14170013859510866     pass
+random_excursion_test                   0.2963685630969405      pass
+random_excursion_variant_test           0.24650996530318914     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/206698/compressed.zip
+-+-+-++------++
+monobit_test                            3.483496992332671e-10   fail
+frequency_within_block_test             0.12814401957020843     pass
+runs_test                               0.0                     fail
+longest_run_ones_in_a_block_test        0.045420198704710535    pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.1442920554401154      pass
+non_overlapping_template_matching_test  0.999999964316372       pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             2.5930848134951426e-20  fail
+approximate_entropy_test                2.4725388134955333e-20  fail
+cumulative_sums_test                    2.4568724832363387e-10  fail
+random_excursion_test                   0.017243798114820432    pass
+random_excursion_variant_test           0.020543853397948206    pass
+/home/alex/Documents/GitHub/compdec/data/dataset/153210/compressed.gzip
+---+--+-------+
+monobit_test                            2.0280277172863228e-24  fail
+frequency_within_block_test             1.3687475418329363e-21  fail
+runs_test                               0.0                     fail
+longest_run_ones_in_a_block_test        0.3147872086955025      pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.0005880515099275532   fail
+non_overlapping_template_matching_test  0.9998444275187973      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             1.6316058661420104e-298 fail
+approximate_entropy_test                7.455717358406566e-255  fail
+cumulative_sums_test                    0.0                     fail
+random_excursion_test                   0.00876740582047296     fail
+random_excursion_variant_test           0.41421617824252505     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/973194/compressed.brotli
+---+-++------++
+monobit_test                            2.517842724561297e-06   fail
+frequency_within_block_test             1.568875761725922e-05   fail
+runs_test                               0.0                     fail
+longest_run_ones_in_a_block_test        0.8859603717471864      pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.6555185783676534      pass
+non_overlapping_template_matching_test  0.9994531779082481      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             2.1225133885800915e-05  fail
+approximate_entropy_test                2.868132754596404e-05   fail
+cumulative_sums_test                    1.7121803141950664e-06  fail
+random_excursion_test                   0.3403923566050174      pass
+random_excursion_variant_test           0.22631767773288142     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/183987/compressed.lz4
+---+-++------++
+monobit_test                            2.6476521801812954e-19  fail
+frequency_within_block_test             2.395558415691083e-47   fail
+runs_test                               0.0                     fail
+longest_run_ones_in_a_block_test        0.0795761734023798      pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.5033912747353955      pass
+non_overlapping_template_matching_test  0.999570967934324       pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             2.767406132864349e-18   fail
+approximate_entropy_test                2.6176841237892366e-18  fail
+cumulative_sums_test                    0.0                     fail
+random_excursion_test                   0.17316304896088677     pass
+random_excursion_variant_test           0.38888541180776504     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/123304/compressed.bzip2
+++++-++---+++++
+monobit_test                            0.7154085709267743      pass
+frequency_within_block_test             0.0714135784422215      pass
+runs_test                               0.8689483468976082      pass
+longest_run_ones_in_a_block_test        0.7976171696334984      pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.11843384006619212     pass
+non_overlapping_template_matching_test  0.9999996931994087      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.4426882377592036      pass
+approximate_entropy_test                0.7073793286994912      pass
+cumulative_sums_test                    0.49546531603561306     pass
+random_excursion_test                   0.2530323832484429      pass
+random_excursion_variant_test           0.3174543240439068      pass
+/home/alex/Documents/GitHub/compdec/data/dataset/490102/compressed.gzip
+---+-++------++
+monobit_test                            3.9027088716788877e-13  fail
+frequency_within_block_test             0.00010790308217032687  fail
+runs_test                               0.0                     fail
+longest_run_ones_in_a_block_test        0.15896283375591938     pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.6925368517850838      pass
+non_overlapping_template_matching_test  0.9999993136309627      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             5.0901771554715736e-12  fail
+approximate_entropy_test                6.6302781060301875e-12  fail
+cumulative_sums_test                    5.400124791776761e-13   fail
+random_excursion_test                   0.10785082141981447     pass
+random_excursion_variant_test           0.3840882494738521      pass
+/home/alex/Documents/GitHub/compdec/data/dataset/176366/compressed.lz4
+---+-++------++
+monobit_test                            2.1127592577571422e-10  fail
+frequency_within_block_test             4.1417782122409476e-72  fail
+runs_test                               0.0                     fail
+longest_run_ones_in_a_block_test        0.29650374629657655     pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.5362661156207451      pass
+non_overlapping_template_matching_test  0.9998370054316842      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             5.343546320624542e-18   fail
+approximate_entropy_test                6.893140310284882e-18   fail
+cumulative_sums_test                    8.570699705501283e-12   fail
+random_excursion_test                   0.10178604834988954     pass
+random_excursion_variant_test           0.10703901034709812     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/922712/compressed.brotli
+-+++-++-------+
+monobit_test                            0.0008822477975444363   fail
+frequency_within_block_test             0.694355791849931       pass
+runs_test                               0.8468924604899372      pass
+longest_run_ones_in_a_block_test        0.39358178056445564     pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.23955279900549575     pass
+non_overlapping_template_matching_test  0.9992255487185022      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.0007318345281275574   fail
+approximate_entropy_test                0.0006548344314752347   fail
+cumulative_sums_test                    0.0015974690735172103   fail
+random_excursion_test                   2.772041441002831e-12   fail
+random_excursion_variant_test           0.02578187777747253     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/974986/compressed.zip
+-+-+-++------++
+monobit_test                            2.962246691260523e-05   fail
+frequency_within_block_test             0.06827287285494645     pass
+runs_test                               0.0                     fail
+longest_run_ones_in_a_block_test        0.26612040630461914     pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.5840371274443733      pass
+non_overlapping_template_matching_test  0.999999996537907       pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.000755482964265808    fail
+approximate_entropy_test                0.0007348449781653367   fail
+cumulative_sums_test                    2.1368142524735845e-05  fail
+random_excursion_test                   0.11211246309090726     pass
+random_excursion_variant_test           0.08024166929066141     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/672703/compressed.compress
+------+-------+
+monobit_test                            1.8291499812389755e-243 fail
+frequency_within_block_test             1.4771300078344327e-200 fail
+runs_test                               0.0                     fail
+longest_run_ones_in_a_block_test        0.0015286388715549956   fail
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                2.20762647099113e-07    fail
+non_overlapping_template_matching_test  0.9817479325181692      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.0                     fail
+approximate_entropy_test                0.0                     fail
+cumulative_sums_test                    0.0                     fail
+random_excursion_test                   1.4583720003462069e-06  fail
+random_excursion_variant_test           0.31731050786291415     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/702533/compressed.7z
+++++-++---+++++
+monobit_test                            0.40730771682768957     pass
+frequency_within_block_test             0.5382627130472671      pass
+runs_test                               0.7182367929366187      pass
+longest_run_ones_in_a_block_test        0.5730645172834372      pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.10260513359244375     pass
+non_overlapping_template_matching_test  0.9999999967679094      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.167830108521099       pass
+approximate_entropy_test                0.1667250863262609      pass
+cumulative_sums_test                    0.3997030019813774      pass
+random_excursion_test                   0.024555827166226642    pass
+random_excursion_variant_test           0.012973990182041506    pass
+/home/alex/Documents/GitHub/compdec/data/dataset/370846/compressed.rar
+++++-++---+++-+
+monobit_test                            0.15729920705028522     pass
+frequency_within_block_test             0.7705552499365607      pass
+runs_test                               0.22002442267263142     pass
+longest_run_ones_in_a_block_test        0.4987206703181773      pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.6776351093514515      pass
+non_overlapping_template_matching_test  0.9999999674397193      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.41509306441945104     pass
+approximate_entropy_test                0.42368502841494377     pass
+cumulative_sums_test                    0.19270141696851417     pass
+random_excursion_test                   0.0031282250464933626   fail
+random_excursion_variant_test           0.10336444641937705     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/720172/compressed.rar
+-+-+-++------++
+monobit_test                            0.0004069520174449599   fail
+frequency_within_block_test             0.3046416375939918      pass
+runs_test                               1.063941103121935e-10   fail
+longest_run_ones_in_a_block_test        0.29161038580124754     pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.8711314915971293      pass
+non_overlapping_template_matching_test  0.9999978589230949      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             1.0547191721551391e-21  fail
+approximate_entropy_test                1.0573086929276777e-22  fail
+cumulative_sums_test                    0.00022037369939909013  fail
+random_excursion_test                   0.04424431532612378     pass
+random_excursion_variant_test           0.04942196697967599     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/082553/compressed.lz4
+++----+-----+++
+monobit_test                            0.2990079816577661      pass
+frequency_within_block_test             0.029214592736669986    pass
+runs_test                               3.499648900554237e-05   fail
+longest_run_ones_in_a_block_test        0.005467340993554877    fail
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.005468757637874673    fail
+non_overlapping_template_matching_test  0.9999999949469417      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             4.542568926783608e-06   fail
+approximate_entropy_test                5.944387591078996e-06   fail
+cumulative_sums_test                    0.22321990603373298     pass
+random_excursion_test                   0.13808436779421712     pass
+random_excursion_variant_test           0.159668141475698       pass
+/home/alex/Documents/GitHub/compdec/data/dataset/923489/compressed.bzip2
+++++-++---+++++
+monobit_test                            0.1301145174972117      pass
+frequency_within_block_test             0.46792186414379044     pass
+runs_test                               0.19284431557451887     pass
+longest_run_ones_in_a_block_test        0.3901253176230507      pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.640938811519079       pass
+non_overlapping_template_matching_test  0.9999999480156281      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.47242651735062785     pass
+approximate_entropy_test                0.486870393064953       pass
+cumulative_sums_test                    0.15419951603257065     pass
+random_excursion_test                   0.26573587580117086     pass
+random_excursion_variant_test           0.047747799397908054    pass
+/home/alex/Documents/GitHub/compdec/data/dataset/518499/compressed.rar
+---+-++-------+
+monobit_test                            1.5712822662708303e-27  fail
+frequency_within_block_test             1.063034281125926e-22   fail
+runs_test                               0.0                     fail
+longest_run_ones_in_a_block_test        0.027756350867546936    pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.8472425314680376      pass
+non_overlapping_template_matching_test  0.9986613702282808      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             1.4441541416771455e-28  fail
+approximate_entropy_test                2.9519204314304364e-29  fail
+cumulative_sums_test                    0.0                     fail
+random_excursion_test                   0.005663413368318716    fail
+random_excursion_variant_test           0.028332962784810248    pass
+/home/alex/Documents/GitHub/compdec/data/dataset/232348/compressed.bzip2
+++++-++---++++-
+monobit_test                            0.4658769654515402      pass
+frequency_within_block_test             0.2630215696122244      pass
+runs_test                               0.15815647003427152     pass
+longest_run_ones_in_a_block_test        0.10512876420405867     pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.15283866922196362     pass
+non_overlapping_template_matching_test  0.9999999737343401      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.8486575552541563      pass
+approximate_entropy_test                0.8478155641268853      pass
+cumulative_sums_test                    0.03251719905108619     pass
+random_excursion_test                   0.45967392644260785     pass
+random_excursion_variant_test           0.004544459337201553    fail
+/home/alex/Documents/GitHub/compdec/data/dataset/240503/compressed.bzip2
+++++-++---+++--
+monobit_test                            0.2551204923684204      pass
+frequency_within_block_test             0.6530345009863534      pass
+runs_test                               0.6557029086168691      pass
+longest_run_ones_in_a_block_test        0.9400834912137362      pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.5840371274443733      pass
+non_overlapping_template_matching_test  0.9999999943379111      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.49579527865649187     pass
+approximate_entropy_test                0.4939473455267305      pass
+cumulative_sums_test                    0.18401376073435127     pass
+random_excursion_test                   0.007326835232546761    fail
+random_excursion_variant_test           2.314376062946433e-08   fail
+/home/alex/Documents/GitHub/compdec/data/dataset/928382/compressed.gzip
+-+++-++---++--+
+monobit_test                            0.0009548103373946459   fail
+frequency_within_block_test             0.20726617019159288     pass
+runs_test                               0.607637410281304       pass
+longest_run_ones_in_a_block_test        0.43126934897974945     pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.8077481147872763      pass
+non_overlapping_template_matching_test  0.9999996658088414      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.07513474186512668     pass
+approximate_entropy_test                0.07196515685358075     pass
+cumulative_sums_test                    0.0006056444248125903   fail
+random_excursion_test                   0.005755919462072215    fail
+random_excursion_variant_test           0.2566450312893326      pass
+/home/alex/Documents/GitHub/compdec/data/dataset/872588/compressed.lz4
+------+-------+
+monobit_test                            0.0                     fail
+frequency_within_block_test             0.0                     fail
+runs_test                               0.0                     fail
+longest_run_ones_in_a_block_test        3.5667091153759746e-07  fail
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                1.7888394966409086e-14  fail
+non_overlapping_template_matching_test  0.07220247902775452     pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.0                     fail
+approximate_entropy_test                0.0                     fail
+cumulative_sums_test                    0.0                     fail
+random_excursion_test                   0.00017578224150905942  fail
+random_excursion_variant_test           0.135961853854647       pass
+/home/alex/Documents/GitHub/compdec/data/dataset/176366/compressed.rar
+++++-++---+++++
+monobit_test                            0.18858496998292057     pass
+frequency_within_block_test             0.40001749955766625     pass
+runs_test                               0.5423911467343006      pass
+longest_run_ones_in_a_block_test        0.677696169040132       pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.5497121687806658      pass
+non_overlapping_template_matching_test  0.999874170030275       pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.44015886713350943     pass
+approximate_entropy_test                0.45940141230281495     pass
+cumulative_sums_test                    0.12844524874043106     pass
+random_excursion_test                   0.16467984998126012     pass
+random_excursion_variant_test           0.2034676004570628      pass
+/home/alex/Documents/GitHub/compdec/data/dataset/352606/compressed.7z
+++++-++---+++++
+monobit_test                            0.5656130888661762      pass
+frequency_within_block_test             0.02572157505487816     pass
+runs_test                               0.2700089196340615      pass
+longest_run_ones_in_a_block_test        0.9155938659786691      pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.7532901578813329      pass
+non_overlapping_template_matching_test  0.9999801965354481      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.10252079801668493     pass
+approximate_entropy_test                0.15990037661484283     pass
+cumulative_sums_test                    0.47347682840573224     pass
+random_excursion_test                   0.08194714002311396     pass
+random_excursion_variant_test           0.1179416353876154      pass
+/home/alex/Documents/GitHub/compdec/data/dataset/360590/compressed.compress
+------+-------+
+monobit_test                            3.4774448687814477e-202 fail
+frequency_within_block_test             1.3097197642479346e-160 fail
+runs_test                               0.0                     fail
+longest_run_ones_in_a_block_test        0.009899754760040102    fail
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                5.2209859240527625e-09  fail
+non_overlapping_template_matching_test  0.9943028048507528      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.0                     fail
+approximate_entropy_test                0.0                     fail
+cumulative_sums_test                    0.0                     fail
+random_excursion_test                   0.00035980371719896207  fail
+random_excursion_variant_test           0.033894853524689274    pass
+/home/alex/Documents/GitHub/compdec/data/dataset/703902/compressed.bzip2
+++++-++---+++-+
+monobit_test                            0.3591273879124584      pass
+frequency_within_block_test             0.013584042857206881    pass
+runs_test                               0.8633309896472807      pass
+longest_run_ones_in_a_block_test        0.0911034080159665      pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.7303044900235647      pass
+non_overlapping_template_matching_test  0.999999935868224       pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.6045320113741139      pass
+approximate_entropy_test                0.8259536892236116      pass
+cumulative_sums_test                    0.16758302705739148     pass
+random_excursion_test                   3.7887918447998866e-05  fail
+random_excursion_variant_test           0.12715299260001423     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/726863/compressed.gzip
++-++-++---+++++
+monobit_test                            0.1848975989656003      pass
+frequency_within_block_test             2.5180534769623345e-05  fail
+runs_test                               0.5369619244109065      pass
+longest_run_ones_in_a_block_test        0.933872373766642       pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.8711314915971293      pass
+non_overlapping_template_matching_test  0.999822513847274       pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.5704785340896746      pass
+approximate_entropy_test                0.5729906179583261      pass
+cumulative_sums_test                    0.05273481705720151     pass
+random_excursion_test                   0.04530991496648344     pass
+random_excursion_variant_test           0.32412658775761904     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/415147/compressed.7z
+++++-++---+++++
+monobit_test                            0.3591273879124584      pass
+frequency_within_block_test             0.7085628570644478      pass
+runs_test                               0.6380308002410767      pass
+longest_run_ones_in_a_block_test        0.3569676976213543      pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.5701877750903236      pass
+non_overlapping_template_matching_test  0.9999999812618449      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.5162293884656501      pass
+approximate_entropy_test                0.7097569853970703      pass
+cumulative_sums_test                    0.133290631625          pass
+random_excursion_test                   0.11069408990759048     pass
+random_excursion_variant_test           0.0791497790862444      pass
+/home/alex/Documents/GitHub/compdec/data/dataset/538860/compressed.zip
+++++-++---+++-+
+monobit_test                            0.011048376775208278    pass
+frequency_within_block_test             0.8624889863772471      pass
+runs_test                               0.7974145806702924      pass
+longest_run_ones_in_a_block_test        0.9344006446856077      pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.9919105156352347      pass
+non_overlapping_template_matching_test  0.9999999982287772      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.011132473445638584    pass
+approximate_entropy_test                0.011264387169549204    pass
+cumulative_sums_test                    0.011102130859999448    pass
+random_excursion_test                   1.3234080210587364e-05  fail
+random_excursion_variant_test           0.05041052491239699     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/012119/compressed.brotli
+++----+-----++-
+monobit_test                            0.8079527542652444      pass
+frequency_within_block_test             0.6799085134525344      pass
+runs_test                               7.991185015151066e-48   fail
+longest_run_ones_in_a_block_test        2.627213958514164e-06   fail
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                6.3513328901932576e-15  fail
+non_overlapping_template_matching_test  0.9999992796934611      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             6.666329506720607e-266  fail
+approximate_entropy_test                1.4347770116499213e-274 fail
+cumulative_sums_test                    0.249192459951886       pass
+random_excursion_test                   0.02324773027060116     pass
+random_excursion_variant_test           0.00042627324941572485  fail
+/home/alex/Documents/GitHub/compdec/data/dataset/858007/compressed.7z
+---+-++------++
+monobit_test                            1.3630843331662898e-07  fail
+frequency_within_block_test             2.7819845042288067e-13  fail
+runs_test                               0.0                     fail
+longest_run_ones_in_a_block_test        0.15553714893272283     pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.5840371274443733      pass
+non_overlapping_template_matching_test  0.9999993388598959      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             5.529241691652743e-14   fail
+approximate_entropy_test                1.434428523284584e-13   fail
+cumulative_sums_test                    2.1407812433871243e-07  fail
+random_excursion_test                   0.3858743477155829      pass
+random_excursion_variant_test           0.12933490081689453     pass
+/home/alex/Documents/GitHub/compdec/data/dataset/795285/compressed.rar
+++++-++---+++++
+monobit_test                            0.1848975989656003      pass
+frequency_within_block_test             0.8133990625325785      pass
+runs_test                               0.3540358596814385      pass
+longest_run_ones_in_a_block_test        0.1917183444512627      pass
+binary_matrix_rank_test                 0.0                     fail
+dft_test                                0.05533448575646628     pass
+non_overlapping_template_matching_test  0.9999999981252775      pass
+overlapping_template_matching_test      0.0                     fail
+maurers_universal_test                  0.0                     fail
+linear_complexity_test                  0.0                     fail
+serial_test                             0.20629745099302887     pass
+approximate_entropy_test                0.2780413032042779      pass
+cumulative_sums_test                    0.17359964781033188     pass
+random_excursion_test                   0.05344648942449139     pass
+random_excursion_variant_test           0.2871896615855424      pass
