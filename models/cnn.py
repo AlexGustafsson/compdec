@@ -10,15 +10,17 @@ import csv
 import numpy
 from pathlib import Path
 from math import floor, sqrt
+import seaborn as sns
 
 class_names = ["7z", "brotli", "bzip2", "compress", "gzip", "lz4", "rar", "zip"]
 
 print_samples = False
-test_samples = True
+test_samples = False
 train = False
 use_tensorboard = True
-use_gpu = True
+use_gpu = False
 save_model = False
+create_confusion_matrix = True
 
 expected_chunk_size=4096
 image_size=64
@@ -217,4 +219,26 @@ if test_samples:
         plt.grid(False)
         plt.imshow(sample, cmap=plt.cm.binary)
         plt.xlabel("{} ({})".format(prediction_labels[i], class_names[label]))
+    plt.show()
+
+# Create a confusion matrix
+if create_confusion_matrix:
+    dataset_iterator = test_dataset.__iter__()
+    required_batches = int(test_dataset_size / batch_size)
+    predictions = []
+    correct = []
+    for i in range(required_batches):
+        samples, labels = next(dataset_iterator)
+        batch_predictions = model.predict_on_batch(samples).tolist()
+        predictions += [numpy.argmax(prediction, axis=0) for prediction in batch_predictions]
+        correct += list(labels)
+        break
+    predictions = numpy.array(predictions)
+    correct = numpy.array(correct)
+    confusion_matrix = tf.math.confusion_matrix(correct, predictions)
+    plt.figure(figsize=(len(class_names), len(class_names)))
+    sns.heatmap(confusion_matrix, square=True, xticklabels=class_names, cbar=False, yticklabels=class_names, annot=True, fmt='g', cmap=plt.get_cmap("Blues"))
+    plt.xlabel('Prediction')
+    plt.ylabel('Label')
+    plt.yticks(rotation = 0)
     plt.show()
