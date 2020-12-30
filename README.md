@@ -165,6 +165,12 @@ An example plot from early development, trained on 50K samples for 60 epochs loo
   <img src="./samples/confusion-matrix.png">
 </p>
 
+### Models
+
+Requirements: Ubuntu 20.04, CuDNN 8.0.4, Tensorflow 2., CUDA 11.0.
+
+See: https://medium.com/@cwbernards/tensorflow-2-3-on-ubuntu-20-04-lts-with-cuda-11-0-and-cudnn-8-0-fb136a829e7f.
+
 ### Tools
 <a name="development-tools"></a>
 
