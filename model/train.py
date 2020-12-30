@@ -87,7 +87,6 @@ def train(options):
         model_utilities.save_model(model, model_path)
 
 def main():
-    print(sys.argv)
     parser = ArgumentParser(description="A tool train a model")
     parser.add_argument("--model-name", required=True, type=str, help="Name of the model to create")
     parser.add_argument("--training-strata", required=True, type=str, help="Path to training strata")
