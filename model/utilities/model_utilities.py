@@ -19,14 +19,20 @@ def save_model(model, path):
 
 def create_model():
     model = tf.keras.models.Sequential()
-    model.add(tf.keras.layers.Conv2D(64, (3, 3), activation='relu', input_shape=(dataset_utilities.IMAGE_SIZE, dataset_utilities.IMAGE_SIZE, 1)))
-    model.add(tf.keras.layers.MaxPooling2D((2, 2)))
-    model.add(tf.keras.layers.Conv2D(128, (3, 3), activation='relu'))
-    model.add(tf.keras.layers.MaxPooling2D((2, 2)))
-    model.add(tf.keras.layers.Conv2D(128, (3, 3), activation='relu'))
+    model.add(tf.keras.layers.Conv2D(filters=32, kernel_size=(3, 3), activation='relu', padding="same", input_shape=(dataset_utilities.IMAGE_SIZE, dataset_utilities.IMAGE_SIZE, 1)))
+    model.add(tf.keras.layers.Conv2D(filters=32, kernel_size=(3, 3), activation='relu', padding="same"))
+    model.add(tf.keras.layers.MaxPooling2D(pool_size=(3, 3), strides=(2, 2)))
+    model.add(tf.keras.layers.Conv2D(filters=64, kernel_size=(3, 3), activation='relu', padding="same"))
+    model.add(tf.keras.layers.MaxPooling2D(pool_size=(3, 3), strides=(2, 2)))
+    model.add(tf.keras.layers.Conv2D(filters=126, kernel_size=(3, 3), activation='relu', padding="same"))
+    model.add(tf.keras.layers.MaxPooling2D(pool_size=(3, 3), strides=(2, 2)))
+    model.add(tf.keras.layers.Conv2D(filters=256, kernel_size=(3, 3), activation='relu', padding="same"))
+    model.add(tf.keras.layers.MaxPooling2D(pool_size=(3, 3), strides=(2, 2)))
     model.add(tf.keras.layers.Flatten())
-    model.add(tf.keras.layers.Dense(128, activation='relu'))
+    model.add(tf.keras.layers.Dense(2048, activation='relu'))
+    model.add(tf.keras.layers.Dense(2048, activation='relu'))
     model.add(tf.keras.layers.Dense(len(dataset_utilities.CLASS_NAMES), activation="softmax"))
+
     return model
 
 def initialize_model_from_cache(model, checkpoint_path, checkpoint_directory):
