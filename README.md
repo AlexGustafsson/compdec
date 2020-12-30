@@ -21,6 +21,9 @@ This project aims to fill this gap, answering the following questions:
 [Dataset](#dataset)<br />
 [Development](#development)<br />
 [Development - Quickstart](#development-quickstart)<br />
+[Development - Quickstart - Setup](#development-quickstart-setup)<br />
+[Development - Quickstart - Data Preparation](#development-quickstart-data)<br />
+[Development - Quickstart - Training and Evaluation](#development-quickstart-training)<br />
 [Development - Tools](#development-tools)
 
 ## Dataset
@@ -66,6 +69,7 @@ There are two pseudo-random samples, `random` and `urandom` taken from `/dev/ran
 <a name="development-quickstart"></a>
 
 #### Setting up the project
+<a name="development-quickstart-setup"></a>
 To start, first clone this repository.
 
 ```sh
@@ -75,6 +79,7 @@ git clone --recurse-submodules https://github.com/AlexGustafsson/compdec.git && 
 To train the model, you'll need some training data. The paper uses the [GovDocs](https://digitalcorpora.org/corpora/files) dataset, but any larger dataset with a wide variety of files should work fine. For ease of use, a tool is included to download the data. The commands below download a small subset of the dataset, suitable for testing and developing. This procedure can be repeated for any number of available threads.
 
 #### Preparing data
+<a name="development-quickstart-data"></a>
 ```sh
 mkdir -p data
 ./tools/govdocs.sh download data threads/thread0.zip
@@ -117,6 +122,7 @@ python3 ./tools/even_sampling.py seed ./data/index.csv 20 ./data/evaluation-stra
 Make sure that you apply an appropriate split of the data. Although a small number was used in this example, you may use the full sample size of the dataset.
 
 #### Training and evaluating the model
+<a name="development-quickstart-training"></a>
 Given the dataset, we can now train a model like so:
 
 ```sh
@@ -167,7 +173,15 @@ An example plot from early development, trained on 50K samples for 60 epochs loo
 
 ### Models
 
-Requirements: Ubuntu 20.04, CuDNN 8.0.4, Tensorflow 2., CUDA 11.0.
+Requirements:
+* Ubuntu 20.04 / macOS 11
+* CuDNN 8.0.4
+* Tensorflow 2.4
+* CUDA 11.1
+* matplotlib,
+* numpy
+* pyyaml
+* h5py
 
 See: https://medium.com/@cwbernards/tensorflow-2-3-on-ubuntu-20-04-lts-with-cuda-11-0-and-cudnn-8-0-fb136a829e7f.
 
