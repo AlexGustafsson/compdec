@@ -228,7 +228,7 @@ As for the samples taken from the dataset, the following table, figure \ref{fig:
 \subsection{Model Training}
 \label{result:model}
 
-The model is a Convolutional Neural Network based off of previous work by Q. Chen et. al.. The model takes in a visual representation of a 4096 byte chunk, that is, a 64 by 64 grayscale image. The image is then passed through a series of convolutions and max pools for feature extraction. After feature extraction, the data is passed through two 2048 classification layers ending with a softmax output\cite{chen2018}.
+The model is a Convolutional Neural Network based off of previous work by Q. Chen et. al.. The model takes in a visual representation of a 4096 byte chunk, that is, a 64 by 64 grayscale image. The image is then passed through a series of convolutions and max pools for feature extraction. After feature extraction, the data is passed through two 2048 classification layers ending with a softmax output. It is trained using the Adam optimizer and Sparse Categorical Crossentropy as loss function.\cite{chen2018}.
 
 The model was chosen due to its proven performance in file fragment classification, achieving state-of-the-art\cite{chen2018}. The network architecture is shown in figure \ref{fig:cnn}.
 
@@ -288,6 +288,8 @@ As mentioned, the training was stopped once the network started producing random
 
 The performance of the network could be related to its design. By design, the network will downscale the problem and extract features from the file fragment representation\cite{chen2018}. This causes the network to focus on parts of the fragment, instead of considering the entire sample. By utilizing another network such as an LSTM, one could be able to produce more accurate results by letting the network consider the entire file sample and potentially identifying larger patterns\cite{LE2018S118}.
 
+Evaluating the accuracy after training the model using different optimizers and loss functions could have yielded better results.
+
 \subsection{Threats to Validity}
 This chapter describes the internal, external and constructional validity and what actions were taken to limit their impacts.
 
@@ -320,7 +322,7 @@ Compressed file fragments produced by some tool are far from random, whilst some
 
 A CNN model may be used and trained on compressed file samples to produce classification with an accuracy of 41\%. The used model was accurately able to identify files compressed using compress, lzip and bzip2.
 
-Future work could focus on developing a new purpose-built CNN. The model presented in this paper was initially built for general file fragment classification and was not adapted for compressed file fragment\cite{chen2018}. Another potential area of improvement would be exploring LSTMs. Using these networks could enable the model to learn longer distance relationships throughout the files, instead of the simpler patterns detected by CNNs\cite{LE2018S118}.
+Future work could focus on developing a new purpose-built CNN. The model presented in this paper was initially built for general file fragment classification and was not adapted for compressed file fragment\cite{chen2018}. Another potential area of improvement would be exploring LSTMs. Using these networks could enable the model to learn longer distance relationships throughout the files, instead of the simpler patterns detected by CNNs\cite{LE2018S118}. Evaluating the accuracy after training the model using different optimizers and loss functions could have yielded better results. By conducting an experiment using different configurations, one could have found a better design.
 
 \newpage
 \bibliographystyle{IEEEtran}
