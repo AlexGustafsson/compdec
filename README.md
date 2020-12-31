@@ -165,7 +165,7 @@ To evaluate the performance of the model, one can render a confusion matrix like
 python3 ./model/plot.py --type confusion-matrix --model ./data/models/my-model.h5 --strata ./data/evaluation-strata.csv
 ```
 
-An example plot from early development, trained on 50K samples for 60 epochs looks like this:
+An example plot, trained on 2M samples for 5 epochs looks like this:
 
 <p align="center">
   <img src="./samples/confusion-matrix.png">
