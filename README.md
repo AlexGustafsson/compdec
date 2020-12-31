@@ -248,7 +248,7 @@ An example plot, trained on 2M samples for 5 epochs looks like this:
   <img src="./samples/network-architecture.png">
 </p>
 
-_The network architecture based on the work of Q. Chen et. al._
+_The network architecture based on the work of Q. Chen et al._
 
 For instructions on how to train and evaluate the model, refer to the quickstart.
 

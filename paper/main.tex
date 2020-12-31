@@ -22,7 +22,7 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{CompDec - Detect the Compression Algorithm of File Fragments using Convolutional Neural Networks}
+\title{CompDec - Detection of the Compression Algorithm of File Fragments using Convolutional Neural Networks}
 
 \author{\IEEEauthorblockN{Alex Gustafsson}
 \IEEEauthorblockA{\textit{DVACD16} \\
@@ -38,11 +38,11 @@ algc16@student.bth.se}
 
 \section{Introduction}
 
-In digital forensics \textit{data carving} is the act of extracting files directly from some memory media - without any metadata or known filesystem. Conventional techniques use simple heuristics such as magic numbers, headers etc. These techniques do not scale well due to a limited number of supported file types, slow processing speeds and insufficient accuracy.
+In digital forensics, \textit{data carving} is the act of extracting files directly from some memory media - without any metadata or known filesystem. Conventional techniques use simple heuristics such as magic numbers, headers etc. These techniques do not scale well due to a limited number of supported file types, slow processing speeds and insufficient accuracy.
 
 Recently, machine learning has been applied to the subject, achieving state-of-the-art results both in terms of scale, accuracy and speed. These techniques utilize an efficient feature extraction from files that can be turned into a small image or other representation of the features. The images are then fed to convolutional neural networks to learn to identify parts of files.
 
-These techniques focus on generality to identify files such as documents (.txt, .docx, .ppt, .pdf) and images (.jpg, .png). There is a gap in research when it comes to effectively identify compressed files and what algorithm was used. Compression algorithms seek to make data as dense as possible, which will in turn likely yield a higher entropy than a typical file. This in theory could make detection much harder.
+These techniques focus on generality to identify files such as documents (.txt, .docx, .ppt, .pdf) and images (.jpg, .png). There is a gap in research when it comes to accurately identifying compressed files and what algorithm was used to compress them. Compression algorithms seek to make data as dense as possible, which will in turn likely yield a higher entropy than a typical file. This in theory could make detection much harder\cite{PENROSE2013}.
 
 As data carving is a common task in memory forensics, better tooling will most likely help the industry and community with more efficient and accurate detection of compressed files and file chunks.
 
@@ -61,7 +61,7 @@ We seek to fill the gap in research when it comes to identifying the compression
     \item How can a machine-learning system be utilized to detect the algorithm used to compress a file fragment?
 \end{itemize}
 
-\subsection{Limitations}
+\subsection{Delimitations}
 
 In order to answer how compressed files compare to random data in terms of entropy, only some files and random samples may be feasibly studied. To limit the scope, the analyzed files were selected based on some conditions. These conditions are discussed in greater detail in \ref{method:dataset} and \ref{method:entropy}.
 
@@ -71,9 +71,9 @@ How a machine-learning system can be utilized will be limited to a study of prev
 \label{introduction:related}
 Recently, machine learning has been applied to the subject of file fragment identification, achieving state-of-the-art results both in terms of scale, accuracy and speed. These techniques utilize an efficient feature extraction from files that can be turned into a small image or other representation of the features. The images are then fed to convolutional neural networks to learn to identify parts of files.
 
-One article, \textit{File Fragment Classification Using Grayscale Image Conversion and Deep Learning in Digital Forensics}, discusses the application of Convolutional Neural Networks to identify the file type of a file fragment. The presented method works well, but was not tested against compressed files\cite{chen2018}.
+One article, \textit{File Fragment Classification Using Grayscale Image Conversion and Deep Learning in Digital Forensics}, discusses the application of Convolutional Neural Networks to identify the file type of a file fragment. The presented method achieves accurate results. The produced model was however not tested against compressed files\cite{chen2018}.
 
-Another article, \textit{Using Machine Learning to detect the File Compression or Encryption} focuses on detecting if a file fragment has been compressed or encrypted. It achieves a high accuracy using meta-information such as data received from NIST's Statistical Test Suite. It does not, however, mention how to identify the compression algorithm of a file fragment\cite{hahn2018}.
+Another article, \textit{Using Machine Learning to detect the File Compression or Encryption} focuses on detecting if a file fragment has been compressed or encrypted. It achieves a high accuracy using meta-information such as data received from NIST's Statistical Test Suite. However, it does not mention how to identify the compression algorithm of a file fragment\cite{hahn2018}.
 
 \section{Method}
 
@@ -87,7 +87,7 @@ The compression algorithms and tools to include in the dataset were chosen using
     \item They must be wide-spread
 \end{itemize}
 
-The algorithms and related tools presented in figure \ref{fig:method:algorithms} were identified as potential candidates given the above criteria.
+The algorithms and related tools presented in table \ref{fig:method:algorithms} were identified as potential candidates given the above criteria.
 
 \begin{figure}[H]
     \centering
@@ -140,11 +140,11 @@ All tools were run on a Debian "stable slim" Docker container for which the code
 
 As a basis for the dataset used in this research lies the publicly available Govdocs1 dataset. It was created with the intention of enabling further research on files and file fragments. The corpora contains one million documents obtained from various web servers on .gov domains\footnote{\href{https://digitalcorpora.org/corpora/files}{https://digitalcorpora.org/corpora/files}}.
 
-Since the dataset does not include all the algorithms intended to be studied, a set of tools were developed to deterministically create an adaptation of the dataset. These tools allow for anyone to download the Govdocs1 dataset and create the dataset used in this research. The tool is freely available on GitHub\footnote{\href{https://github.com/AlexGustafsson/compdec}{https://github.com/AlexGustafsson/compdec}}. The seed used in this paper is $1.3035772690$.
+Since the dataset does not include all the algorithms intended to be studied, a set of tools were developed to deterministically create an adaptation of the dataset using a seed. These tools allow for anyone to download the Govdocs1 dataset and create the dataset used in this research. The toolset is freely available on GitHub\footnote{\href{https://github.com/AlexGustafsson/compdec}{https://github.com/AlexGustafsson/compdec}}. The seed used in this paper is $1.3035772690$.
 
-Tools such as zip only support compressing directories. Tools such as gzip only supports compressing a single file. To make the process more coherent, each file in the dataset is put into a directory. For tools with support for compressing directories, such as rar and zip, this directory is compressed directly. For tools not supporting directories, such as gzip, the tar tool is used to archive the directory. This archive is then compressed.
+Tools such as zip only support compressing directories whilst tools such as gzip only supports compressing a single file. To make the process more coherent, each file in the dataset is put into a directory. For tools with support for compressing directories, such as rar and zip, this directory is compressed directly. For tools not supporting directories, such as gzip, the tar tool is used to archive the directory. This archive is then compressed.
 
-Each compressed file is then split into chunks. As modern file systems store data in chunks or clusters of 4096 bytes\cite{PENROSE2013}, this study will focus on the use of 4096 as the fragment size.
+Each compressed file in the base dataset is split into chunks. As modern file systems store data in chunks or clusters of 4096 bytes\cite{PENROSE2013}, this study will focus on the use of 4096 as the fragment size.
 
 % TODO: write about what subset of the dataset was used, i.e. what of the available zip files at http://downloads.digitalcorpora.org/corpora/files/govdocs1/zipfiles/ were used?
 % TODO: limitation, not able to train on all of the data?
@@ -166,7 +166,7 @@ Due to the amount of available samples in the dataset and the time required to e
 
 Each chunk in the sample was evaluated using a NIST Statistical Test Suite\footnote{\href{https://csrc.nist.gov/Projects/Random-Bit-Generation/Documentation-and-Software}{https://csrc.nist.gov/Projects/Random-Bit-Generation/Documentation-and-Software}} implementation\footnote{\href{https://github.com/dj-on-github/sp800_22_tests}{https://github.com/dj-on-github/sp800\_22\_tests}}. NIST's own implementation was not used as it was not deemed suitable for scriptable use due to its interactive interface. It would therefore be impractical to use it for all of the available samples. The results of this paper assumes that the output from the tool is accurate.
 
-NIST has studied the issue of analysing the entropy of random number generators and pseudo-random number generators extensively. They have provided a set of tests which determine whether or not a sequence of bytes can be considered truly random\cite{NIST2010}.
+NIST has studied the issue of analysing the entropy of random number generators and pseudo-random number generators extensively. They have provided a set of tests that determine whether or not a sequence of bytes can be considered truly random\cite{NIST2010}.
 
 Using this toolset, the entropy of sample files from the dataset was analysed in order to get an idea of whether or not the files may contain any pattern. The procedure is explained in detail below.
 
@@ -225,10 +225,10 @@ As for the samples taken from the dataset, the following table, figure \ref{fig:
     \label{fig:nist_samples}
 \end{figure}
 
-\subsection{Model Training}
+\subsection{Model Training and Evaluation}
 \label{result:model}
 
-The model is a Convolutional Neural Network based off of previous work by Q. Chen et. al.. The model takes in a visual representation of a 4096 byte chunk, that is, a 64 by 64 grayscale image. The image is then passed through a series of convolutions and max pools for feature extraction. After feature extraction, the data is passed through two 2048 classification layers ending with a softmax output. It is trained using the Adam optimizer and Sparse Categorical Crossentropy as loss function.\cite{chen2018}.
+The model is a Convolutional Neural Network based off of previous work by Q. Chen el al.. The model takes in a visual representation of a 4096 byte chunk, that is, a 64 by 64 grayscale image. The image is then passed through a series of convolutions and max pools for feature extraction. After feature extraction, the data is passed through two 2048 classification layers ending with a softmax output. It is trained using the Adam optimizer and Sparse Categorical Crossentropy as loss function.\cite{chen2018}.
 
 The model was chosen due to its proven performance in file fragment classification, achieving state-of-the-art\cite{chen2018}. The network architecture is shown in figure \ref{fig:cnn}.
 
@@ -267,15 +267,15 @@ In figure \ref{fig:samples} predicted labels, the prediction confidence and the 
 
 \section{Discussion}
 
-\section{The Entropy of Compressed Files}
+\subsection{The Entropy of Compressed Files}
 
-Given the data presented in figure \ref{fig:nist_random} and figure \ref{fig:nist_samples} one can see that 7z is considered to be as random as the data from /dev/random. The data from rar and bzip2 are close to random as well. Two tools are considerably less random than the others, however; compress and lz4.
+Given the data presented in figure \ref{fig:nist_random} and figure \ref{fig:nist_samples} one can see that 7z is considered to be as random as the data from /dev/random. The data from rar and bzip2 are close to random as well. Two of the evaluated tools produce data that is considerably less random than the others - compress and lz4.
 
 In theory, these numbers suggest that a machine learning algorithm should be able to learn the concepts of the structure of the output of compress and lz4, and potentially more tools\cite{lakshmanan2021machine}.
 
-\section{Model Training}
+\subsection{Model Training and Evaluation}
 
-As presented in figure \ref{fig:confusion-matrix}, the model is able to accurately detect with the compress tool with 97\% accuracy. It also makes a good job at detecting bzip2 and lz4. The model does confuse 7z and bzip2 a lot and also produces somewhat accurate predictions for brotli - the third worst performer in the statistical test.
+As presented in figure \ref{fig:confusion-matrix}, the model is able to accurately detect with the compress tool with 97\% accuracy. It is also able to detect bzip2 and lz4 with an accuracy of 61\% and 64\% respectively. The model does confuse 7z and bzip2 about 50\% of the time and also produces somewhat accurate predictions for brotli - the third worst performer in the statistical test.
 
 As can be seen in figure \ref{fig:samples}, these results are not entirely unsurprising given that there are visible patterns in chunks produced by these tools.
 
@@ -304,9 +304,9 @@ An implementation of NIST's Statistical Test Suite was chosen due to the ease of
 This flaw is mitigated by the fact that we're using relative comparisons on the data produced by the tool.
 
 \subsubsection{Construct Validity}
-A possible threat to construct validity could be that in this study we ignore other means of evaluating entropy than that provided by NIST's Statistical Test Suite. There are more ways of determining the entropy of samples, which could lead to a different result than that presented herein.
+A potential threat to the construct validity of this work could be the sole use of NIST's Statistical Test Suite. There are more ways of determining the entropy of samples, which could lead to different results than those presented herein.
 
-Another potential threat is the design of the dataset and how the CNN model is trained and evaluated. As we were unable to find any dataset specifically targeting compressed file fragments, a dataset was created. The choices of algorithms, parameters and pre-processing may be incorrect and cause data to be incorrect. To limit the impact of this threat, we've ensured that each compressed file uses the default values wherever possible to produce files as the toolmakers' intended. Furthermore, an established dataset, GovDocs1 was used as the base for the dataset, providing a wide range of potential files for the compression algorithms to work with. This should help limit any potential selection bias.
+Another potential threat is the design of the dataset and how the CNN model is trained and evaluated. As we were unable to find any dataset specifically targeting compressed file fragments, a dataset was created. The choices of algorithms, parameters and pre-processing may be incorrect and cause data to be incorrect. To limit the impact of this threat, we have ensured that each compressed file uses the default values wherever possible to produce files as the toolmakers' intended. Furthermore, an established dataset, GovDocs1 was used as the base for the dataset, providing a wide range of potential files for the compression algorithms to work with. This should help limit any potential selection bias.
 
 \subsubsection{Conclusion Validity}
 \label{section:conclusion-validity}
