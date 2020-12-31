@@ -76,6 +76,24 @@ There are two pseudo-random samples, `random` and `urandom` taken from `/dev/ran
 
 #### Setting up the project
 <a name="development-quickstart-setup"></a>
+
+Prerequisites:
+* Ubuntu 20.04 for training and evaluation
+* macOS 11 for development and CPU inference
+* CuDNN 8.0.4
+* Tensorflow 2.4
+* CUDA 11.1
+* Python 3.8
+  * matplotlib
+  * seaborn
+  * numpy
+  * pyyaml
+  * h5py
+  * PIL
+* Docker 19
+
+See: https://medium.com/@cwbernards/tensorflow-2-3-on-ubuntu-20-04-lts-with-cuda-11-0-and-cudnn-8-0-fb136a829e7f.
+
 To start, first clone this repository.
 
 ```sh
@@ -179,22 +197,32 @@ An example plot, trained on 2M samples for 5 epochs looks like this:
 
 ### Model
 
-Requirements:
-* Ubuntu 20.04 for training and evaluation
-* macOS 11 for development and CPU inference
-* CuDNN 8.0.4
-* Tensorflow 2.4
-* CUDA 11.1
-* Python 3.8
-  * matplotlib
-  * seaborn
-  * numpy
-  * pyyaml
-  * h5py
-  * PIL
-* Docker 19
+<p align="center">
+  <img src="./samples/network-architecture.png">
+</p>
 
-See: https://medium.com/@cwbernards/tensorflow-2-3-on-ubuntu-20-04-lts-with-cuda-11-0-and-cudnn-8-0-fb136a829e7f.
+_The network architecture based on the work of Q. Chen et. al._
+
+For instructions on how to train and evaluate the model, refer to the quickstart.
+
+The model is defined as a Keras model in `model/utilities/model_utilities.py`:
+
+```python
+model = tf.keras.models.Sequential()
+model.add(tf.keras.layers.Conv2D(filters=32, kernel_size=(3, 3), activation="relu", padding="same", input_shape=(dataset_utilities.IMAGE_SIZE, dataset_utilities.IMAGE_SIZE, 1)))
+model.add(tf.keras.layers.Conv2D(filters=32, kernel_size=(3, 3), activation="relu", padding="same"))
+model.add(tf.keras.layers.MaxPooling2D(pool_size=(3, 3), strides=(2, 2)))
+model.add(tf.keras.layers.Conv2D(filters=64, kernel_size=(3, 3), activation="relu", padding="same"))
+model.add(tf.keras.layers.MaxPooling2D(pool_size=(3, 3), strides=(2, 2)))
+model.add(tf.keras.layers.Conv2D(filters=126, kernel_size=(3, 3), activation="relu", padding="same"))
+model.add(tf.keras.layers.MaxPooling2D(pool_size=(3, 3), strides=(2, 2)))
+model.add(tf.keras.layers.Conv2D(filters=256, kernel_size=(3, 3), activation="relu", padding="same"))
+model.add(tf.keras.layers.MaxPooling2D(pool_size=(3, 3), strides=(2, 2)))
+model.add(tf.keras.layers.Flatten())
+model.add(tf.keras.layers.Dense(2048, activation="relu"))
+model.add(tf.keras.layers.Dense(2048, activation="relu"))
+model.add(tf.keras.layers.Dense(len(dataset_utilities.CLASS_NAMES), activation="softmax"))
+```
 
 ### Tools
 <a name="development-tools"></a>
