@@ -33,16 +33,16 @@ algc16@student.bth.se}
 \maketitle
 
 \begin{abstract}
-    Conventional techniques in the domain of digital forensics and data carving focus on simple heuristics. Recently, machine learning has been applied to the subject, achieving state-of-the-art results. This research has, however, focused on general file support. No research has been done on the identification of the algorithm used to compress file fragments. A dataset with a sole focus on compression algorithms was developed and released, using GovDocs1 as a base. Using NIST's Statistical Test Suite, it was found that several compression algorithm produce output that are seemingly random - resulting in a difficult classification problem. By training a convolutional neural network on the dataset, an accuracy of 41\% was achieved, highlighting the difficult nature of this problem. The files created by the tools compress, lz4 and bzip2 were accurately classified whilst others such as zip, rar and gzip produced random guesses. Future work could focus on developing a new purpose-built convolutional neural network, or exploring long short-term memory networks.
+    Conventional techniques in the domain of digital forensics and data carving focus on simple heuristics. Recently, machine learning has been applied to the subject, achieving state-of-the-art results. The research, however, has focused on general file support. No research has been done on the identification of the algorithm used to compress file fragments. A dataset with a sole focus on compression algorithms was developed and released, using GovDocs1 as a base. Using NIST's Statistical Test Suite, it was found that several compression algorithm produce output that are seemingly random - resulting in a difficult classification problem. By training a convolutional neural network on the dataset, an accuracy of 41\% was achieved, highlighting the difficult nature of this problem. The files created by the tools compress, lz4 and bzip2 were accurately classified whilst others such as zip, rar and gzip produced random guesses. Future work could focus on developing a new purpose-built convolutional neural network, or exploring long short-term memory networks.
 \end{abstract}
 
 \section{Introduction}
 
-In digital forensics, \textit{data carving} is the act of extracting files directly from some memory media - without any metadata or known filesystem. Conventional techniques use simple heuristics such as magic numbers, headers etc. These techniques do not scale well due to a limited number of supported file types, slow processing speeds and insufficient accuracy.
+In digital forensics, \textit{data carving} is the act of extracting files directly from some memory media - without any metadata or known filesystem. Conventional techniques use simple heuristics such as magic numbers, headers etc. These techniques do not scale well due to a limited number of supported file types, slow processing speeds as well as an insufficient accuracy\cite{chen2018}.
 
-Recently, machine learning has been applied to the subject, achieving state-of-the-art results both in terms of scale, accuracy and speed. These techniques utilize an efficient feature extraction from files that can be turned into a small image or other representation of the features. The images are then fed to convolutional neural networks to learn to identify parts of files.
+Recently, machine learning has been applied to the subject, achieving state-of-the-art results both in terms of scale, accuracy and speed. These techniques utilize an efficient feature extraction from files that can be turned into a small image or other representation of the features. The images are then fed to Convolutional Neural Networks (CNNs) to learn to identify parts of files.
 
-These techniques focus on generality to identify files such as documents (.txt, .docx, .ppt, .pdf) and images (.jpg, .png). There is a gap in research when it comes to accurately identifying compressed files and what algorithm was used to compress them. Compression algorithms seek to make data as dense as possible, which will in turn likely yield a higher entropy than a typical file. This in theory could make detection much harder\cite{PENROSE2013}.
+These techniques focus on generality to identify files such as documents (.txt, .docx, .ppt, .pdf) and images (.jpg, .png). There is a gap in research when it comes to accurately identifying compressed files and what algorithm was used to compress them. Compression algorithms seek to make data as dense as possible, which will in turn likely yield a higher entropy than a typical file. This in theory could make the identification of the algorithms more difficult than typical image classification problems\cite{PENROSE2013}.
 
 As data carving is a common task in memory forensics, better tooling will most likely help the industry and community with more efficient and accurate detection of compressed files and file chunks.
 
@@ -63,7 +63,7 @@ We seek to fill the gap in research when it comes to identifying the compression
 
 \subsection{Delimitations}
 
-In order to answer how compressed files compare to random data in terms of entropy, only some files and random samples may be feasibly studied. To limit the scope, the analyzed files were selected based on some conditions. These conditions are discussed in greater detail in \ref{method:dataset} and \ref{method:entropy}.
+To limit the scope of the comparison of compressed files and random data, a subset of all available compression algorithms and types of random data will be considered. The analyzed files were selected based on some conditions. These conditions are discussed in greater detail in \ref{method:dataset} and \ref{method:entropy}.
 
 How a machine-learning system can be utilized will be limited to a study of previous state-of-the-art implementations of file fragment identification. Related work is discussed under \ref{introduction:related} and the model implementation under \ref{result:model}.
 
@@ -77,7 +77,7 @@ Another article, \textit{Using Machine Learning to detect the File Compression o
 
 \section{Method}
 
-\subsection{Compression algorithm selection}
+\subsection{Compression Algorithm Selection}
 
 The compression algorithms and tools to include in the dataset were chosen using the following criteria.
 
@@ -154,7 +154,7 @@ Each compressed file in the base dataset is split into chunks. As modern file sy
 % M1, M2 medelvärde för två grupper. Skillnaden, dividera
 % Introinformation om statistical power: http://powerandsamplesize.com: https://www.stat.ubc.ca/~rollin/stats/ssize/n2.html
 
-\subsection{Analysis of entropy}
+\subsection{Analysis of Entropy}
 \label{method:entropy}
 
 % From Wikipedia: https://en.wikipedia.org/wiki/Stratified_sampling
@@ -316,6 +316,7 @@ Another potential threat is the design of the dataset and how the CNN model is t
 
 Using the presented method, we are confident that one may find use for a machine learning model in the domain of compressed file fragment identification. We do however believe that the time allocated to perform the preparation (designing, preparation of data) and the training and evaluation has the potential to affect the results.
 
+\newpage
 \section{Conclusion}
 
 Compressed file fragments produced by some tool are far from random, whilst some produce data virtually indistinguishable from pseudo-random and random data. The tools compress and lz4 perform far worse than the other evaluated tools in terms of the NIST Statistical Test Suite.
@@ -324,7 +325,6 @@ A CNN model may be used and trained on compressed file samples to produce classi
 
 Future work could focus on developing a new purpose-built CNN. The model presented in this paper was initially built for general file fragment classification and was not adapted for compressed file fragment\cite{chen2018}. Another potential area of improvement would be exploring LSTMs. Using these networks could enable the model to learn longer distance relationships throughout the files, instead of the simpler patterns detected by CNNs\cite{LE2018S118}. Evaluating the accuracy after training the model using different optimizers and loss functions could have yielded better results. By conducting an experiment using different configurations, one could have found a better design.
 
-\newpage
 \bibliographystyle{IEEEtran}
 \bibliography{bibliography.bib}
 
