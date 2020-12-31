@@ -16,6 +16,12 @@ This project aims to fill this gap, answering the following questions:
 
 **TL;DR** CompDec is a novel approach to automatically detect the compression algorithm used for file fragments using machine learning.
 
+<p align="center">
+  <img src="./samples/sample-predictions.png">
+</p>
+
+_Predicted labels for some randomly chosen samples. Format: prediction (confidence) (label)._
+
 ## Table of Contents
 
 [Dataset](#dataset)<br />
