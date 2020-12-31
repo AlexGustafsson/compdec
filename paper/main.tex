@@ -1,0 +1,375 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{seqsplit}
+\usepackage{varwidth}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,      
+    urlcolor=blue,
+    citecolor=blue
+}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{CompDec - Detect the Compression Algorithm of File Fragments using Convolutional Neural Networks}
+
+\author{\IEEEauthorblockN{Alex Gustafsson}
+\IEEEauthorblockA{\textit{DVACD16} \\
+Karlskrona, Blekinge \\
+algc16@student.bth.se}
+}
+
+\maketitle
+
+\begin{abstract}
+    Conventional techniques in the domain of digital forensics and data carving focus on simple heuristics. Recently, machine learning has been applied to the subject, achieving state-of-the-art results. This research has, however, focused on general file support. No research has been done on the identification of the algorithm used to compress file fragments. A dataset with a sole focus on compression algorithms was developed and released, using GovDocs1 as a base. Using NIST's Statistical Test Suite, it was found that several compression algorithm produce output that are seemingly random - resulting in a difficult classification problem. By training a convolutional neural network on the dataset, an accuracy of 41\% was achieved, highlighting the difficult nature of this problem. The files created by the tools compress, lz4 and bzip2 were accurately classified whilst others such as zip, rar and gzip produced random guesses. Future work could focus on developing a new purpose-built convolutional neural network, or exploring long short-term memory networks.
+\end{abstract}
+
+\section{Introduction}
+
+In digital forensics \textit{data carving} is the act of extracting files directly from some memory media - without any metadata or known filesystem. Conventional techniques use simple heuristics such as magic numbers, headers etc. These techniques do not scale well due to a limited number of supported file types, slow processing speeds and insufficient accuracy.
+
+Recently, machine learning has been applied to the subject, achieving state-of-the-art results both in terms of scale, accuracy and speed. These techniques utilize an efficient feature extraction from files that can be turned into a small image or other representation of the features. The images are then fed to convolutional neural networks to learn to identify parts of files.
+
+These techniques focus on generality to identify files such as documents (.txt, .docx, .ppt, .pdf) and images (.jpg, .png). There is a gap in research when it comes to effectively identify compressed files and what algorithm was used. Compression algorithms seek to make data as dense as possible, which will in turn likely yield a higher entropy than a typical file. This in theory could make detection much harder.
+
+As data carving is a common task in memory forensics, better tooling will most likely help the industry and community with more efficient and accurate detection of compressed files and file chunks.
+
+There is no dataset readily available with a focus on compressed files, therefore an existing dataset, GovDocs\footnote{\href{https://digitalcorpora.org/corpora/files}{https://digitalcorpora.org/corpora/files}}, will be used as a base. Each file will be compressed using various algorithms such as zip, gzip, bzip2, rar etc.
+
+Based off of previous work, a model will be designed and trained.
+
+The tool to create the dataset, train and evaluate the model, as well as using a pre-trained model will be released as part of the paper to allow others to reuse the same dataset and to validate the work.
+
+\subsection{Research Question}
+
+We seek to fill the gap in research when it comes to identifying the compression algorithm used to compress a file fragment. By doing so we hope to answer the following questions.
+
+\begin{itemize}
+    \item How do compressed files compare to random data in terms of entropy?
+    \item How can a machine-learning system be utilized to detect the algorithm used to compress a file fragment?
+\end{itemize}
+
+\subsection{Limitations}
+
+In order to answer how compressed files compare to random data in terms of entropy, only some files and random samples may be feasibly studied. To limit the scope, the analyzed files were selected based on some conditions. These conditions are discussed in greater detail in \ref{method:dataset} and \ref{method:entropy}.
+
+How a machine-learning system can be utilized will be limited to a study of previous state-of-the-art implementations of file fragment identification. Related work is discussed under \ref{introduction:related} and the model implementation under \ref{result:model}.
+
+\subsection{Related Work}
+\label{introduction:related}
+Recently, machine learning has been applied to the subject of file fragment identification, achieving state-of-the-art results both in terms of scale, accuracy and speed. These techniques utilize an efficient feature extraction from files that can be turned into a small image or other representation of the features. The images are then fed to convolutional neural networks to learn to identify parts of files.
+
+One article, \textit{File Fragment Classification Using Grayscale Image Conversion and Deep Learning in Digital Forensics}, discusses the application of Convolutional Neural Networks to identify the file type of a file fragment. The presented method works well, but was not tested against compressed files\cite{chen2018}.
+
+Another article, \textit{Using Machine Learning to detect the File Compression or Encryption} focuses on detecting if a file fragment has been compressed or encrypted. It achieves a high accuracy using meta-information such as data received from NIST's Statistical Test Suite. It does not, however, mention how to identify the compression algorithm of a file fragment\cite{hahn2018}.
+
+\section{Method}
+
+\subsection{Compression algorithm selection}
+
+The compression algorithms and tools to include in the dataset were chosen using the following criteria.
+
+\begin{itemize}
+    \item They must be general-purpose
+    \item There must be a freely available cross-platform implementation
+    \item They must be wide-spread
+\end{itemize}
+
+The algorithms and related tools presented in figure \ref{fig:method:algorithms} were identified as potential candidates given the above criteria.
+
+\begin{figure}[H]
+    \centering
+    \begin{tabular}{l|l}
+        Algorithm & Tool(s)\\
+        \hline
+        LZ77 & rar, gzip, zip\cite{HORNEY2013,KONECKI2011} \\
+        PPM & 7-zip, rar\cite{HORNEY2013, KONECKI2011} \\
+        LZMA & 7-zip\cite{HORNEY2013, KONECKI2011} \\
+        BWT & bzip\cite{HORNEY2013, KONECKI2011} \\
+        LZW & compress / ncompress\cite{HORNEY2013, KONECKI2011} \\
+        lz4 & lz4\footnotemark\\
+        brotli & brotli\footnotemark \\
+        Deflate & zip, gzip\cite{HORNEY2013} \\
+    \end{tabular}
+    \caption{Algorithms and Implementations, in no particular order}
+    \label{fig:method:algorithms}
+\end{figure}
+\addtocounter{footnote}{-2}
+\addtocounter{footnote}{1}
+\footnotetext{\href{https://github.com/lz4/lz4}{https://github.com/lz4/lz4}}
+\addtocounter{footnote}{1}
+\footnotetext{\href{https://github.com/google/brotli}{https://github.com/google/brotli}}
+
+The algorithm implementation differs between tools, such as the implementation of LZ77 for rar, gzip and zip\cite{HORNEY2013}. Therefore, the study will focus on the implementation made available by the respective tools, meaning the tools in figure \ref{fig:method:algorithms2} will be studied 
+further.
+
+\begin{figure}[H]
+    \centering
+    \begin{tabular}{l|l}
+        Tool & Version\\
+        \hline
+        rar & 5.40 \\
+        gzip & 1.9 \\
+        zip & 3.0 \\
+        7-zip & 16.02 \\
+        bzip2 & 1.0.6 \\
+        ncompress & 4.2.4.5 \\
+        lz4 & v1.8.3 \\
+        brotli & 1.0.7
+    \end{tabular}
+    \caption{Implementations chosen for inclusion in the dataset, in no particular order}
+    \label{fig:method:algorithms2}
+\end{figure}
+
+All tools were run on a Debian "stable slim" Docker container for which the code is available on GitHub\footnote{\href{https://github.com/AlexGustafsson/compdec}{https://github.com/AlexGustafsson/compdec}}.
+
+\subsection{Dataset}
+\label{method:dataset}
+
+As a basis for the dataset used in this research lies the publicly available Govdocs1 dataset. It was created with the intention of enabling further research on files and file fragments. The corpora contains one million documents obtained from various web servers on .gov domains\footnote{\href{https://digitalcorpora.org/corpora/files}{https://digitalcorpora.org/corpora/files}}.
+
+Since the dataset does not include all the algorithms intended to be studied, a set of tools were developed to deterministically create an adaptation of the dataset. These tools allow for anyone to download the Govdocs1 dataset and create the dataset used in this research. The tool is freely available on GitHub\footnote{\href{https://github.com/AlexGustafsson/compdec}{https://github.com/AlexGustafsson/compdec}}. The seed used in this paper is $1.3035772690$.
+
+Tools such as zip only support compressing directories. Tools such as gzip only supports compressing a single file. To make the process more coherent, each file in the dataset is put into a directory. For tools with support for compressing directories, such as rar and zip, this directory is compressed directly. For tools not supporting directories, such as gzip, the tar tool is used to archive the directory. This archive is then compressed.
+
+Each compressed file is then split into chunks. As modern file systems store data in chunks or clusters of 4096 bytes\cite{PENROSE2013}, this study will focus on the use of 4096 as the fragment size.
+
+% TODO: write about what subset of the dataset was used, i.e. what of the available zip files at http://downloads.digitalcorpora.org/corpora/files/govdocs1/zipfiles/ were used?
+% TODO: limitation, not able to train on all of the data?
+% TODO: Mention why 4096 bytes are used
+% TODO: normalized compression distance
+% TODO: effektstorlek (https://www.socscistatistics.com/effectsize/default3.aspx)
+% M1, M2 medelvärde för två grupper. Skillnaden, dividera
+% Introinformation om statistical power: http://powerandsamplesize.com: https://www.stat.ubc.ca/~rollin/stats/ssize/n2.html
+
+\subsection{Analysis of entropy}
+\label{method:entropy}
+
+% From Wikipedia: https://en.wikipedia.org/wiki/Stratified_sampling
+% The reasons to use stratified sampling rather than simple random sampling include:
+% 1. If measurements within strata have lower standard deviation, stratification gives smaller error in estimation
+% 2. For many applications, measurements become more manageable and/or cheaper when the population is grouped into strata
+% 3. It is often desirable to have estimates of population parameters for groups within the population
+Due to the amount of available samples in the dataset and the time required to evaluate a sample, it is impractical to evaluate them all. Instead, a randomly selected sample of 80 chunks (10 per tool) was used, created by using the aforementioned seed of $1.3035772690$
+
+Each chunk in the sample was evaluated using a NIST Statistical Test Suite\footnote{\href{https://csrc.nist.gov/Projects/Random-Bit-Generation/Documentation-and-Software}{https://csrc.nist.gov/Projects/Random-Bit-Generation/Documentation-and-Software}} implementation\footnote{\href{https://github.com/dj-on-github/sp800_22_tests}{https://github.com/dj-on-github/sp800\_22\_tests}}. NIST's own implementation was not used as it was not deemed suitable for scriptable use due to its interactive interface. It would therefore be impractical to use it for all of the available samples. The results of this paper assumes that the output from the tool is accurate.
+
+NIST has studied the issue of analysing the entropy of random number generators and pseudo-random number generators extensively. They have provided a set of tests which determine whether or not a sequence of bytes can be considered truly random\cite{NIST2010}.
+
+Using this toolset, the entropy of sample files from the dataset was analysed in order to get an idea of whether or not the files may contain any pattern. The procedure is explained in detail below.
+
+The test suite consists of 15 tests, each of which results in a pass or fail. A sample passes a test if it is considered random and fails otherwise. The following tests are performed:
+
+\begin{itemize}
+    \item Frequency (Monobit) Test
+    \item Frequency Test within a Block
+    \item Runs Test
+    \item Test for the Longest Run of Ones in a Block
+    \item Binary Matrix Rank Test
+    \item Discrete Fourier Transform (Specral) Test
+    \item Non-Overlapping Template Matching Test
+    \item Overlapping Template Matching Test
+    \item Maurer's "Universal Statistical" Test
+    \item Linear Complexity Test
+    \item Serial Test
+    \item Approximate Entropy Test
+    \item Cumulative Sums (Cumsum) Test
+    \item Random Excursions Test
+    \item Random Excursions Variant Test
+\end{itemize}
+
+By evaluating the entropy of files, one may shed light on available patterns in data which one might exploit for detection. When it comes to compressed and encrypted data, the entropy is usually much higher than that of a non-compressed and non-encrypted file. Previously, researches have argued that this fact makes it difficult to detect features of such high-entropy files\cite{PENROSE2013}.
+
+The produced dataset contains $5653232$ usable 4096 byte sized samples for the algorithms under test. As it was deemed unfeasible to test all samples, sampling was used to select a subset of the dataset to evaluate.
+
+Using the provided tools and the aforementioned seed, an even sample of 80 was created. As the samples are compressed, they should in theory be similar to other samples produced by the same tool, making it meaningless to try many more samples\cite{HORNEY2013}.
+
+The output of the test suite will be compared to two pseudo-random and one random sample. The two pseudo-random samples are taken from the /dev/random file and /dev/urandom file respectively. These samples were created on macOS 11. The random sample was created by random.org\footnote{\href{https://www.random.org/bytes/}{https://www.random.org/bytes/}}. These samples are included in the project's repository.
+
+% TODO: something something statistical significant for the dataset. If enough files are considered non-random, show that etc. Use percentiles to visualize?
+
+\section{Results}
+
+\subsection{The Entropy of Compressed Files}
+
+The NIST Statistical Test Suite was used to evaluate two pseudo-random samples and one random sample. These are presented in figure \ref{fig:nist_random}. The pseudo-random sample taken from /dev/urandom had a pass rate of 69\%, the sample from /dev/random 63\% and the truly random sequence passed 69\%.
+
+As for the samples taken from the dataset, the following table, figure \ref{fig:nist_samples} shows the pass rate for each evaluated tool.
+
+\begin{figure}[H]
+    \centering
+    \begin{tabular}{l|c|c}
+        Tool & Pass Rate\\ \hline
+        compress & 15\%\\
+        lz4 & 30\%\\
+        brotli & 42\%\\
+        zip & 47\% \\
+        gzip & 48\%\\
+        rar & 60\%\\
+        bzip2 & 63\%\\
+        7z & 66\%\\
+    \end{tabular}
+    \caption{Pass Rate for Evaluated Tools}
+    \label{fig:nist_samples}
+\end{figure}
+
+\subsection{Model Training}
+\label{result:model}
+
+The model is a Convolutional Neural Network based off of previous work by Q. Chen et. al.. The model takes in a visual representation of a 4096 byte chunk, that is, a 64 by 64 grayscale image. The image is then passed through a series of convolutions and max pools for feature extraction. After feature extraction, the data is passed through two 2048 classification layers ending with a softmax output\cite{chen2018}.
+
+The model was chosen due to its proven performance in file fragment classification, achieving state-of-the-art\cite{chen2018}. The network architecture is shown in figure \ref{fig:cnn}.
+
+\begin{figure*}
+    \centering
+    \includegraphics[scale=0.45]{model.pdf}
+    \caption{Network Architecture}
+    \label{fig:cnn}
+\end{figure*}
+
+The implementation, related tools and training instructions are available at the paper's repository.
+
+The model was trained on 2 000 000 samples (250 000 samples per class) and tested using 200 000 samples (25 000 samples per class) (a rough 90\%/10\% split). The model was set to train for 100 epochs, based on the time required for each epoch and the time we could allocate for this procedure.
+
+As can be seen in figure \ref{fig:epoch-accuracy}, the training and validation accuracy never went past 41\%. After 50 epochs, the model started producing worse results. The training was aborted prematurely after 80 epochs as the model did not progress beyond producing an accuracy of 12.43\% for 20 epochs.
+
+The model's state at the fifth epoch (its best performance in terms of validation accuracy) was saved for further analysis.
+
+Once trained, the model achieved 41\% accuracy on the validation set. A confusion matrix of the trained model evaluated on 200 000 evenly distributed samples can be seen in figure \ref{fig:confusion-matrix}.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.25]{confusion-matrix.png}
+    \caption{Confusion Matrix}
+    \label{fig:confusion-matrix}
+\end{figure}
+
+In figure \ref{fig:samples} predicted labels, the prediction confidence and the true label can be seen for the first 25 samples of the validation set. Note that the class ratio in the sample is not representative to the entire dataset.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.25]{sample-predictions.png}
+    \caption{Predicted Samples}
+    \label{fig:samples}
+\end{figure}
+
+\section{Discussion}
+
+\section{The Entropy of Compressed Files}
+
+Given the data presented in figure \ref{fig:nist_random} and figure \ref{fig:nist_samples} one can see that 7z is considered to be as random as the data from /dev/random. The data from rar and bzip2 are close to random as well. Two tools are considerably less random than the others, however; compress and lz4.
+
+In theory, these numbers suggest that a machine learning algorithm should be able to learn the concepts of the structure of the output of compress and lz4, and potentially more tools\cite{lakshmanan2021machine}.
+
+\section{Model Training}
+
+As presented in figure \ref{fig:confusion-matrix}, the model is able to accurately detect with the compress tool with 97\% accuracy. It also makes a good job at detecting bzip2 and lz4. The model does confuse 7z and bzip2 a lot and also produces somewhat accurate predictions for brotli - the third worst performer in the statistical test.
+
+As can be seen in figure \ref{fig:samples}, these results are not entirely unsurprising given that there are visible patterns in chunks produced by these tools.
+
+This is further confirmed by studying the output of NIST's Statistical Test Suite in figure \ref{fig:nist_samples}. Compress and lz4 both performed the worst of the examined tools. Quite surprisingly, however, the model was able to learn to detect bzip2 even though the samples were hard to distinguish from random.
+
+% No longer the case with the 2M model
+% Quite interestingly, the trained model decides to largely ignore the zip samples as can be seen in figure \ref{fig:confusion-matrix}. Several tests were made to ensure that there was no mistake in the dataset, sample or model itself. This is likely due to the fact that both zip and gzip are based on the LZ77 compression algorithm as presented in figure \ref{fig:method:algorithms}. As can be seen by comparing the rows in the confusion matrix for the two tools, the predictions are very similar.
+
+As mentioned, the training was stopped once the network started producing random guesses. At first, the random guesses may seem to be an error. But as shown previously, several tools produce data virtually indistinguishable from pseudo-random and random data. The model likely learned this fact and started producing equally random guesses. By the end of it's training, it achieved an accuracy of 12.43\%. The model was trained on 8 classes, meaning a random guess would produce an accuracy of 12.5\%.
+
+The performance of the network could be related to its design. By design, the network will downscale the problem and extract features from the file fragment representation\cite{chen2018}. This causes the network to focus on parts of the fragment, instead of considering the entire sample. By utilizing another network such as an LSTM, one could be able to produce more accurate results by letting the network consider the entire file sample and potentially identifying larger patterns\cite{LE2018S118}.
+
+\subsection{Threats to Validity}
+This chapter describes the internal, external and constructional validity and what actions were taken to limit their impacts.
+
+\subsubsection{Internal Validity}
+To pre-process, train and evaluate the model, several tools were developed to ease the usage and to increase the reproducability and documentation of the presented findings. These tools may be wrongly developed or build on incorrect assumptions, potentially causing an error in the data. To mitigate this threat, each required step and tool is carefully documented in order to enable others to validate the results. Furthermore, several tests and plots were executed and created to help validate the function of the tools.
+
+During this experiment, time is restraint. Training a large machine learning model requires a lot of time to produce solid results. Due to the time constraint, the trained model used to present the results in this paper might not be accurate or produce accurate figures.
+
+\subsubsection{External Validity}
+An implementation of NIST's Statistical Test Suite was chosen due to the ease of use in the context of this dataset. The tool has not been validated by NIST and it might therefore produce incorrect results.
+
+This flaw is mitigated by the fact that we're using relative comparisons on the data produced by the tool.
+
+\subsubsection{Construct Validity}
+A possible threat to construct validity could be that in this study we ignore other means of evaluating entropy than that provided by NIST's Statistical Test Suite. There are more ways of determining the entropy of samples, which could lead to a different result than that presented herein.
+
+Another potential threat is the design of the dataset and how the CNN model is trained and evaluated. As we were unable to find any dataset specifically targeting compressed file fragments, a dataset was created. The choices of algorithms, parameters and pre-processing may be incorrect and cause data to be incorrect. To limit the impact of this threat, we've ensured that each compressed file uses the default values wherever possible to produce files as the toolmakers' intended. Furthermore, an established dataset, GovDocs1 was used as the base for the dataset, providing a wide range of potential files for the compression algorithms to work with. This should help limit any potential selection bias.
+
+\subsubsection{Conclusion Validity}
+\label{section:conclusion-validity}
+% Can not be written yet. This is a conclusion of our validity's.
+% 1. Conclude that there is no relationship when in fact there is (you missed the relationship or didn’t see it)
+% 2. Conclude that there is a relationship when in fact there is not (you’re seeing things that aren’t there!)
+
+Using the presented method, we are confident that one may find use for a machine learning model in the domain of compressed file fragment identification. We do however believe that the time allocated to perform the preparation (designing, preparation of data) and the training and evaluation has the potential to affect the results.
+
+\section{Conclusion}
+
+Compressed file fragments produced by some tool are far from random, whilst some produce data virtually indistinguishable from pseudo-random and random data. The tools compress and lz4 perform far worse than the other evaluated tools in terms of the NIST Statistical Test Suite.
+
+A CNN model may be used and trained on compressed file samples to produce classification with an accuracy of 41\%. The used model was accurately able to identify files compressed using compress, lzip and bzip2.
+
+Future work could focus on developing a new purpose-built CNN. The model presented in this paper was initially built for general file fragment classification and was not adapted for compressed file fragment\cite{chen2018}. Another potential area of improvement would be exploring LSTMs. Using these networks could enable the model to learn longer distance relationships throughout the files, instead of the simpler patterns detected by CNNs\cite{LE2018S118}.
+
+\newpage
+\bibliographystyle{IEEEtran}
+\bibliography{bibliography.bib}
+
+\newpage
+\onecolumn
+\section*{Appendix}
+
+\subsection{}
+\begin{figure}[H]
+    \centering
+    \begin{tabular}{l|c|c|c}
+        Test & /dev/urandom & /dev/random & random.org \\ \hline
+        Frequency (Monobit) Test & Passed & Passed & Passed \\
+        Frequency Test within a Block & Passed & Passed & Passed \\
+        Runs Test & Passed & Passed & Passed \\
+        Test for the Longest Run of Ones in a Block & Passed & Passed & Passed \\
+        Binary Matrix Rank Test & Failed & Failed & Failed \\
+        Discrete Fourier Transform (Specral) Test & Passed & Passed & Passed \\
+        Non-Overlapping Template Matching Test & Passed & Passed & Passed \\
+        Overlapping Template Matching Test & Failed & Failed & Failed \\
+        Maurer's "Universal Statistical" Test & Failed & Failed & Failed \\
+        Linear Complexity Test & Failed & Failed & Failed \\
+        Serial Test & Passed & Passed & Passed \\
+        Approximate Entropy Test & Passed & Passed & Passed \\
+        Cumulative Sums (Cumsum) Test & Passed & Passed & Passed \\
+        Random Excursions Test & Passed & Passed & Passed \\
+        Random Excursions Variant Test & Failed & Passed & Passed \\ \hline
+        Sum & 10/15 & 11/15 & 11/15
+        \end{tabular}
+    \caption{Pseudo-Random and Random NIST Results}
+    \label{fig:nist_random}
+\end{figure}
+
+\subsection{}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.2]{./epoch.png}
+    \caption{Epoch Accuracy whilst Training}
+    \label{fig:epoch-accuracy}
+\end{figure}
+
+\subsection{}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.2]{./samples.png}
+    \caption{Sample from Dataset}
+    \label{fig:samples}
+\end{figure}
+
+\end{document}
