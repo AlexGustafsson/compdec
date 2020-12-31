@@ -40,6 +40,8 @@ def print_version() -> None:
     print("Model hash: {}".format(hash))
 
 def load_samples_from_file(sample_path):
+    import numpy
+
     with open(sample_path, "rb") as sample_file:
         sample_file.seek(0, 2)
         file_size = sample_file.tell()
@@ -57,13 +59,13 @@ def load_samples_from_file(sample_path):
             samples.append(sample)
         return samples
 
-def predict(file_paths, model_path):
+def predict(sample_paths, model_path):
     import tensorflow
     import numpy
 
     model = tensorflow.keras.models.load_model(model_path)
-    for file_path in file_paths:
-        samples = dataset_utilities.load_samples_from_file(sample_path)
+    for sample_path in sample_paths:
+        samples = load_samples_from_file(sample_path)
 
         if len(samples) == 0:
             print("There are no chunks big enough in the sample file. Expected at least {}B".format(CHUNK_SIZE))
@@ -77,9 +79,9 @@ def predict(file_paths, model_path):
         prediction_sum = sum(predictions)
         normalized_predictions = softmax(prediction_sum)
 
-        print(file_path)
-        for i in range(len(dataset_utilities.CLASS_NAMES)):
-            print("{:9}: {:2.2f}%".format(dataset_utilities.CLASS_NAMES[i], normalized_predictions[i] * 100))
+        print(sample_path)
+        for i in range(len(CLASS_NAMES)):
+            print("{:9}: {:2.2f}%".format(CLASS_NAMES[i], normalized_predictions[i] * 100))
 
 def main():
     parser = ArgumentParser(add_help=False)

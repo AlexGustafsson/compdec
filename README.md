@@ -24,6 +24,7 @@ _Predicted labels for some randomly chosen samples. Format: prediction (confiden
 
 ## Table of Contents
 
+[Quickstart](#quickstart)<br />
 [Dataset](#dataset)<br />
 [Development](#development)<br />
 [Development - Quickstart](#development-quickstart)<br />
@@ -31,6 +32,52 @@ _Predicted labels for some randomly chosen samples. Format: prediction (confiden
 [Development - Quickstart - Data Preparation](#development-quickstart-data)<br />
 [Development - Quickstart - Training and Evaluation](#development-quickstart-training)<br />
 [Development - Tools](#development-tools)
+
+## Quickstart
+<a name="quickstart"></a>
+
+_Note: These instructions are only for inference using the pre-trained model._
+
+First download the latest release from [releases](https://github.com/AlexGustafsson/compdec/releases). The release contains three files; a pre-trained model, a python script and a Dockerfile.
+
+If you wish not to install all the prerequisites mentioned under [Development - Quickstart](#development-quickstart)<br />, build the Docker image instead like so:
+
+```sh
+cd compdec
+docker build -t compdec .
+```
+
+Now you may the script natively or via Docker:
+
+```sh
+# Docker
+docker run -it -v "$/path/to/samples:/samples" compdec /samples/unknown-file1.bin /samples/unknown-file2.bin
+# Native
+python3 ./compdec.py /path/to/samples/unknown-file1.bin /path/to/samples/unknown-file2.bin
+```
+
+The tool will produce output like so:
+
+```
+/path/to/samples/unknown-file1.bin
+7z       : 0.00%
+brotli   : 0.00%
+bzip2    : 0.00%
+compress : 0.00%
+gzip     : 0.00%
+lz4      : 100.00%
+rar      : 0.00%
+zip      : 0.00%
+/path/to/samples/unknown-file2.bin
+7z       : 0.00%
+brotli   : 0.00%
+bzip2    : 0.00%
+compress : 100.00%
+gzip     : 0.00%
+lz4      : 0.00%
+rar      : 0.00%
+zip      : 0.00%
+```
 
 ## Dataset
 <a name="dataset"></a>
