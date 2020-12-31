@@ -2,6 +2,7 @@ import argparse
 import inspect
 import os
 import sys
+import hashlib
 from argparse import ArgumentParser
 
 # These are configurable, but highly dependant on the shipped model
@@ -34,10 +35,15 @@ def print_help(parser: ArgumentParser) -> None:
     print()
     print(description)
 
-def print_version() -> None:
-    hash = ""
+def print_version(model_path) -> None:
+    hash = hashlib.sha256()
+    with open(model_path, "rb") as file:
+        block = file.read(4096)
+        while len(block) > 0:
+            hash.update(block)
+            block = file.read(4096)
     print("CompDec v1.0.0")
-    print("Model hash: {}".format(hash))
+    print("Model hash: {}".format(hash.hexdigest()))
 
 def load_samples_from_file(sample_path):
     import numpy
@@ -83,6 +89,15 @@ def predict(sample_paths, model_path):
         for i in range(len(CLASS_NAMES)):
             print("{:9}: {:2.2f}%".format(CLASS_NAMES[i], normalized_predictions[i] * 100))
 
+def assert_files(paths):
+    files_exist = True
+    for path in paths:
+        if not os.path.exists(path):
+            print("Error: File does not exist:", path)
+            files_exist = False
+    if not files_exist:
+        quit(1)
+
 def main():
     parser = ArgumentParser(add_help=False)
     parser.add_argument("-v", "--version", action="store_true", help="print the program's version")
@@ -95,16 +110,11 @@ def main():
     if options.help:
         print_help(parser)
     elif options.version:
-        print_version()
+        assert_files([options.model])
+        print_version(options.model)
     elif len(options.file) > 0:
         paths = ["".join(file) for file in options.file]
-        files_exist = True
-        for path in paths:
-            if not os.path.exists(path):
-                print("Error: File does not exist:", path)
-                files_exist = False
-        if not files_exist:
-            quit(1)
+        assert_files(paths)
 
         predict(paths, options.model)
     else:
