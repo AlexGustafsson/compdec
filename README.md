@@ -47,7 +47,7 @@ cd compdec
 docker build -t compdec .
 ```
 
-Now you may the script natively or via Docker:
+Now you may use the tool natively or via Docker:
 
 ```sh
 # Docker
