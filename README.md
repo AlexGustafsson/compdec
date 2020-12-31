@@ -40,7 +40,7 @@ _Note: These instructions are only for inference using the pre-trained model._
 
 First download the latest release from [releases](https://github.com/AlexGustafsson/compdec/releases). The release contains three files; a pre-trained model, a python script and a Dockerfile.
 
-If you wish not to install all the prerequisites mentioned under [Development - Quickstart](#development-quickstart)<br />, build the Docker image instead like so:
+If you wish not to install all the prerequisites mentioned under [Development - Quickstart](#development-quickstart), build the Docker image instead like so:
 
 ```sh
 cd compdec
