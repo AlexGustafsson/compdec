@@ -61,11 +61,19 @@ We seek to fill the gap in research when it comes to identifying the compression
     \item How can a machine-learning system be utilized to detect the algorithm used to compress a file fragment?
 \end{itemize}
 
+The hypotheses are:
+
+\textbf{H$_1$}: The machine-learning system achieves an accuracy that is higher than that of random guesses.
+
+\textbf{H$_0$}: The machine-learning system achieves an accuracy equivalent to random guesses.
+
 \subsection{Delimitations}
 
 To limit the scope of the comparison of compressed files and random data, a subset of all available compression algorithms and types of random data will be considered. The analyzed files were selected based on some conditions. These conditions are discussed in greater detail in \ref{method:dataset} and \ref{method:entropy}.
 
 How a machine-learning system can be utilized will be limited to a study of previous state-of-the-art implementations of file fragment identification. Related work is discussed under \ref{introduction:related} and the model implementation under \ref{result:model}.
+
+The accuracy of a random guess is defined to be $12.5\%$ as there are eight classes present in the dataset described in \ref{method:dataset}.
 
 \subsection{Related Work}
 \label{introduction:related}
@@ -241,7 +249,7 @@ The model was chosen due to its proven performance in file fragment classificati
 
 The implementation, related tools and training instructions are available at the paper's repository.
 
-The model was trained on 2 000 000 samples (250 000 samples per class) and tested using 200 000 samples (25 000 samples per class) (a rough 90\%/10\% split). The model was set to train for 100 epochs, based on the time required for each epoch and the time we could allocate for this procedure.
+Using the provided tools, all of the available threads of the GovDocs1 dataset were downloaded, compressed and indexed as chunks as mentioned in \ref{method:dataset}. The model was trained on 2 000 000 of these samples (250 000 samples per class) and tested using 200 000 of the samples (25 000 samples per class) (a rough 90\%/10\% split). The used seed for the sampling is $1.3035772690$. The model was set to train for 100 epochs, based on the time required for each epoch and the time we could allocate for this procedure.
 
 As can be seen in figure \ref{fig:epoch-accuracy}, the training and validation accuracy never went past 41\%. After 50 epochs, the model started producing worse results. The training was aborted prematurely after 80 epochs as the model did not progress beyond producing an accuracy of 12.43\% for 20 epochs.
 
@@ -274,6 +282,8 @@ Given the data presented in figure \ref{fig:nist_random} and figure \ref{fig:nis
 In theory, these numbers suggest that a machine learning algorithm should be able to learn the concepts of the structure of the output of compress and lz4, and potentially more tools\cite{lakshmanan2021machine}.
 
 \subsection{Model Training and Evaluation}
+
+The accuracy of the trained model after five epochs was 41\%, thus proving the hypothesis that a machine-learning system can be used to achieve an accuracy higher than that of random guesses.
 
 As presented in figure \ref{fig:confusion-matrix}, the model is able to accurately detect with the compress tool with 97\% accuracy. It is also able to detect bzip2 and lz4 with an accuracy of 61\% and 64\% respectively. The model does confuse 7z and bzip2 about 50\% of the time and also produces somewhat accurate predictions for brotli - the third worst performer in the statistical test.
 
@@ -323,7 +333,7 @@ Compressed file fragments produced by some tool are far from random, whilst some
 
 A CNN model may be used and trained on compressed file samples to produce classification with an accuracy of 41\%. The used model was accurately able to identify files compressed using compress, lzip and bzip2.
 
-Future work could focus on developing a new purpose-built CNN. The model presented in this paper was initially built for general file fragment classification and was not adapted for compressed file fragment\cite{chen2018}. Another potential area of improvement would be exploring LSTMs. Using these networks could enable the model to learn longer distance relationships throughout the files, instead of the simpler patterns detected by CNNs\cite{LE2018S118}. Evaluating the accuracy after training the model using different optimizers and loss functions could have yielded better results. By conducting an experiment using different configurations, one could have found a better design.
+Future work could focus on developing a new purpose-built CNN. The model presented in this paper was initially built for general file fragment classification and was not adapted for compressed file fragment\cite{chen2018}. Another potential improvement would be to train separate models for each class and combine them into a single system - thus potentially increasing the accuracy of some classes. Yet another potential area of improvement would be exploring LSTMs. Using these networks could enable the model to learn longer distance relationships throughout the files, instead of the simpler patterns detected by CNNs\cite{LE2018S118}. Evaluating the accuracy after training the model using different optimizers and loss functions could have yielded better results. By conducting an experiment using different configurations, one could have found a better design.
 
 \bibliographystyle{IEEEtran}
 \bibliography{bibliography.bib}
