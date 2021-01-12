@@ -33,7 +33,7 @@ algc16@student.bth.se}
 \maketitle
 
 \begin{abstract}
-    Conventional techniques in the domain of digital forensics and data carving focus on simple heuristics. Recently, machine learning has been applied to the subject, achieving state-of-the-art results. The research, however, has focused on general file support. No research has been done on the identification of the algorithm used to compress file fragments. A dataset with a sole focus on compression algorithms was developed and released, using GovDocs1 as a base. Using NIST's Statistical Test Suite, it was found that several compression algorithm produce output that are seemingly random - resulting in a difficult classification problem. By training a convolutional neural network on the dataset, an accuracy of 41\% was achieved, highlighting the difficult nature of this problem. The files created by the tools compress, lz4 and bzip2 were accurately classified whilst others such as zip, rar and gzip produced random guesses. Future work could focus on developing a new purpose-built convolutional neural network, or exploring long short-term memory networks.
+    Conventional techniques in the domain of digital forensics and data carving focus on simple heuristics. Recently, machine learning has been applied to the subject, achieving state-of-the-art results. The research, however, has focused on general file support. No research has been done on the identification of the algorithms used to compress file fragments. A dataset with a sole focus on compression algorithms was developed and released, using GovDocs1 as a base. Using NIST's Statistical Test Suite, it was found that several compression algorithm produce output that are seemingly random - resulting in a difficult classification problem. By training a convolutional neural network on the dataset, an accuracy of 41\% was achieved, highlighting the difficult nature of this problem. The files created by the tools compress, lz4 and bzip2 were accurately classified whilst others such as zip, rar and gzip produced random guesses. Future work could focus on developing a new purpose-built convolutional neural network, or exploring long short-term memory networks.
 \end{abstract}
 
 \section{Introduction}
@@ -255,7 +255,7 @@ As can be seen in figure \ref{fig:epoch-accuracy}, the training and validation a
 
 The model's state at the fifth epoch (its best performance in terms of validation accuracy) was saved for further analysis.
 
-Once trained, the model achieved 41\% accuracy on the validation set. A confusion matrix of the trained model evaluated on 200 000 evenly distributed samples can be seen in figure \ref{fig:confusion-matrix}.
+Once trained, the model achieved 41\% accuracy on the validation set. A confusion matrix of the trained model evaluated on 200 000 evenly distributed samples not in the training set can be seen in figure \ref{fig:confusion-matrix}.
 
 \begin{figure}
     \centering
@@ -329,7 +329,7 @@ Using the presented method, we are confident that one may find use for a machine
 \newpage
 \section{Conclusion}
 
-Compressed file fragments produced by some tool are far from random, whilst some produce data virtually indistinguishable from pseudo-random and random data. The tools compress and lz4 perform far worse than the other evaluated tools in terms of the NIST Statistical Test Suite.
+Compressed file fragments produced by some tools are far from random, whilst some produce data virtually indistinguishable from pseudo-random and random data. The tools compress and lz4 perform far worse than the other evaluated tools in terms of the NIST Statistical Test Suite.
 
 A CNN model may be used and trained on compressed file samples to produce classification with an accuracy of 41\%. The used model was accurately able to identify files compressed using compress, lzip and bzip2.
 
